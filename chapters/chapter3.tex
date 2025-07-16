@@ -52,14 +52,14 @@ For each sample, [number] to [number] augmentations are randomly selected and ap
 
 \subsection{[Method 1] vs. [Method 2]}
 
-In the original [baseline system] \cite{sample2022reference}, a [processing result] for each [data unit] was created as a [mathematical operation] of the previous [number] [data units]. While effective for [goal], this method requires significant computation. Our proposed [method 2] substantially reduces computational demands through an exponential weighting function:
+In the original [baseline system] \cite{haynes2016crc}, a [processing result] for each [data unit] was created as a [mathematical operation] of the previous [number] [data units]. While effective for [goal], this method requires significant computation. Our proposed [method 2] substantially reduces computational demands through an exponential weighting function:
 
 \begin{equation}
 M_t = (1 - \lambda)M_{t-1} + \lambda D_t
 \label{eq:method_equation}
 \end{equation}
 
-where $M_t$ is the [model] at time t, $D_t$ is the current [data unit] at time t, and $\lambda$ is the updating rate which determines the rate at which [changes] are incorporated into the [model]. An excessively large $\lambda$ can lead to [negative effect] \cite{sample2010reference}. Here we chose to use $\lambda = [value]$ to control how quickly the model adapts to changes.
+where $M_t$ is the [model] at time t, $D_t$ is the current [data unit] at time t, and $\lambda$ is the updating rate which determines the rate at which [changes] are incorporated into the [model]. An excessively large $\lambda$ can lead to [negative effect] \cite{haynes2016crc}. Here we chose to use $\lambda = [value]$ to control how quickly the model adapts to changes.
 
 The advantages of using [method 2] are threefold:
 \begin{enumerate}
@@ -79,11 +79,11 @@ where $O_t$ is the [output mask] at time t, and T = [threshold value] is our emp
 
 \subsection{[Additional Technique] Integration}
 
-We integrated [additional technique] analysis to distinguish between [noise type] and [target objects]. Using [algorithm name] \cite{sample2003reference} with optimised parameters, we identify and exclude regions with characteristic [unwanted patterns] from the [output mask]. This approach significantly reduces [error type] while maintaining sensitivity to actual [targets], enabling more reliable detection in environments with [challenging conditions].
+We integrated [additional technique] analysis to distinguish between [noise type] and [target objects]. Using [algorithm name] \cite{ravikumar2016optical} with optimised parameters, we identify and exclude regions with characteristic [unwanted patterns] from the [output mask]. This approach significantly reduces [error type] while maintaining sensitivity to actual [targets], enabling more reliable detection in environments with [challenging conditions].
 
 \subsection{Custom [Algorithm] Model}
 
-To provide a baseline comparison for our [Method 2], we implemented a Custom [Algorithm] Model (C[Algorithm]) based on the adaptive approach by [Author] \cite{sample2004reference, sample2006reference}. Our C[Algorithm] models use a mixture of K = [number] [distributions] to track the temporal evolution of each [data element].
+To provide a baseline comparison for our [Method 2], we implemented a Custom [Algorithm] Model (C[Algorithm]) based on the adaptive approach by [Author] \cite{ravikumar2016optical}. Our C[Algorithm] models use a mixture of K = [number] [distributions] to track the temporal evolution of each [data element].
 
 Our C[Algorithm] implementation differs from standard [standard algorithm] in [number] key aspects:
 \begin{enumerate}
@@ -131,7 +131,7 @@ This reduction in [parameter] substantially decreases the number of operations r
 
 \section{[Model] Architecture}
 
-Since our primary objective is improving the [preprocessing techniques] rather than the [model] itself, we reused the [baseline architecture] \cite{sample2022reference}. However, we implemented specific modifications to optimise it for our [task type] task.
+Since our primary objective is improving the [preprocessing techniques] rather than the [model] itself, we reused the [baseline architecture] \cite{haynes2016crc}. However, we implemented specific modifications to optimise it for our [task type] task.
 
 \subsection{Network Architecture}
 
