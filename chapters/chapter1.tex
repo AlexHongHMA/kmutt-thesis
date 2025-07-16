@@ -1,0 +1,77 @@
+\chapter{INTRODUCTION}
+
+Natural gas is a critical energy resource for modern civilisation, utilised in heating, power generation, and various industrial processes such as methanol, propylene, and ammonia production. It is primarily distributed via pipeline networks from production sites to residential and industrial areas, though alternative methods include compression for vehicle storage or liquefaction at ultra-low temperatures for easier handling. Despite its utility, natural gas poses significant risks due to its high methane content, flammability, and odourless, colourless nature.
+
+Methane, the primary constituent of natural gas, plays a crucial role in the global energy mix due to its extensive use in electricity generation, heating, and various industrial applications. As a fossil fuel, natural gas emits roughly 50\% less carbon dioxide (CO$_2$) than coal when combusted, making it a cleaner energy source. However, methane's global warming potential (GWP)—estimated to be 36 times greater than CO$_2$ over a 100-year period—poses a significant climate risk when leaked into the atmosphere.
+
+Methane, with an explosive range of 5\% to 15\% in air, as documented in the CRC Handbook of Chemistry and Physics \cite{haynes2016crc}, can lead to undetected leaks and catastrophic accidents without advanced detection systems. Such hazards underscore the need for robust monitoring technologies to mitigate risks. These leaks, occurring across the natural gas supply chain from production sites to distribution systems, underscore the urgent need for innovative solutions to detect and mitigate emissions effectively.
+
+Traditional approaches to Leak Detection and Repair (LDAR), such as the U.S. Environmental Protection Agency's (EPA) Method 21 and optical gas imaging (OGI) with infrared (IR) cameras, have proven effective but are often constrained by high operational costs, labor intensity, and inconsistencies due to operator dependence and environmental factors. Furthermore, these conventional methods lack real-time or automated feedback capabilities, creating inefficiencies in large-scale leak monitoring and mitigation efforts.
+
+Infrared imaging and Optical Gas Imaging (OGI) technologies address the challenge of methane's invisibility by detecting its infrared emissions \cite{ravikumar2016optical}. Cameras like the FLIR GF320IR camera, used to capture the GasVid dataset compiled by Wang et al. \cite{wang2020machine} and introduced in their study, detect radiation absorbed by leaking gas, enabling rapid visualisation and real-time response.
+
+Advancements in machine vision and deep learning technologies have enabled the development of automated systems capable of addressing these challenges. One notable innovation is "GasNet," introduced by Wang et al. (2020), which employs convolutional neural networks (CNNs) to detect methane leaks using IR video data \cite{wang2020machine}. Building on this foundation, Wang et al. (2022) presented "VideoGasNet," an advanced system that utilises 3D CNN architectures to detect methane leaks and classify them based on size \cite{wang2022videogasnet}.
+
+Despite these advancements, challenges remain. The computational complexity of VideoGasNet, which employs moving average background subtraction with 210 frames, requires substantial data storage and processing time, posing a challenge for deployment on resource-limited devices. To address these issues, this work proposes an optimised background subtraction method combined with a 3D-CNN for real-time infrared gas leak classification.
+
+\section{Statement of Problem}
+
+The current state of methane leak detection systems faces several critical challenges:
+
+\begin{enumerate}
+\item \textbf{Computational Complexity:} VideoGasNet's moving average background subtraction with 210 frames requires substantial computational resources, making real-time deployment on resource-constrained devices challenging.
+
+\item \textbf{Processing Speed:} Traditional background subtraction methods are computationally intensive, limiting their applicability for real-time monitoring in industrial environments.
+
+\item \textbf{False Positive Rates:} Existing methods struggle with environmental interference, leading to false alarms that increase operational costs and reduce system reliability.
+
+\item \textbf{Resource Constraints:} Current deep learning models require significant memory and processing power, limiting deployment on edge devices for continuous monitoring.
+\end{enumerate}
+
+\section{Objectives}
+
+The primary objectives of this research are:
+
+\begin{enumerate}
+\item To develop an optimised preprocessing pipeline that reduces computational complexity while maintaining high detection accuracy.
+
+\item To implement and evaluate running average background subtraction as an alternative to computationally intensive moving median approaches.
+
+\item To investigate the impact of image resolution reduction on classification performance and computational efficiency.
+
+\item To achieve real-time methane leak classification suitable for deployment on resource-constrained devices.
+
+\item To maintain classification accuracy above 98\% while significantly reducing processing time and computational requirements.
+\end{enumerate}
+
+\section{Scope}
+
+This research focuses on the following areas:
+
+\begin{enumerate}
+\item \textbf{Dataset:} Utilisation of the GasVid dataset for training and evaluation, specifically videos captured at 4.6m and 6.9m distances for optimal signal quality.
+
+\item \textbf{Background Subtraction Methods:} Implementation and comparison of three approaches: Moving Average, Running Average, and Custom Gaussian Mixture Model.
+
+\item \textbf{Resolution Analysis:} Evaluation of three video frame sizes: 240×320 (original), 120×160 (half), and 60×80 (quarter) to assess computational trade-offs.
+
+\item \textbf{Classification Task:} Focus on binary classification (leak vs. no-leak) for practical industrial applications.
+
+\item \textbf{Performance Metrics:} Comprehensive evaluation using accuracy, precision, recall, F1-score, and processing time measurements.
+\end{enumerate}
+
+\section{Expected Benefits}
+
+The anticipated benefits of this research include:
+
+\begin{enumerate}
+\item \textbf{Enhanced Computational Efficiency:} Significant reduction in processing time (up to 3× faster) while maintaining high accuracy, enabling real-time applications.
+
+\item \textbf{Reduced False Positives:} Achievement of zero false positives through optimised preprocessing, reducing unnecessary inspections and operational costs.
+
+\item \textbf{Edge Device Deployment:} Enabling deployment on resource-constrained devices through model size reduction and optimised algorithms.
+
+\item \textbf{Industrial Applicability:} Providing a practical solution for continuous methane leak monitoring in industrial environments.
+
+\item \textbf{Environmental Impact:} Contributing to greenhouse gas reduction efforts through improved leak detection and mitigation capabilities.
+\end{enumerate}
