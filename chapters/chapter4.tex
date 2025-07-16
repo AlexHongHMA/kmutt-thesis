@@ -1,303 +1,278 @@
 \chapter{RESULTS AND DISCUSSION}
 
-To evaluate the performance and efficiency of our proposed solutions, we developed a comprehensive framework comparing three background subtraction methods—Moving Average, Running Average, and Custom GMM—at original resolution (240×320) with optical flow and data augmentation to reduce false positives and improve generalisation. After identifying Running Average as the most effective, we assessed its impact at different resolutions and measured computational efficiency.
+To evaluate the performance and efficiency of our proposed solutions, we developed a comprehensive framework comparing [number] [method types]—[Method 1], [Method 2], and [Method 3]—at original [parameter] ([original value]) with [additional techniques] to reduce [error type] and improve [performance aspect]. After identifying [Method 2] as the most effective, we assessed its impact at different [parameters] and measured computational efficiency.
 
 \section{Experimental Setup}
 
-The experiments focused on two primary areas:
+The experiments focused on [number] primary areas:
 \begin{enumerate}
-\item Comparing different background subtraction methods (Moving Average, Running Average, and Custom Gaussian Mixture Model)
-\item Evaluating the impact of image resolution reduction (240×320, 120×160, 60×80) on model performance
+\item Comparing different [method types] ([Method 1], [Method 2], and [Method 3])
+\item Evaluating the impact of [parameter] reduction ([value 1], [value 2], [value 3]) on model performance
 \end{enumerate}
 
-Performance was evaluated using pairwise binary classification accuracy for no-leak (class 0) versus seven leak scenarios (classes 1-7), with the smallest leak size (0-1 pair) being the most challenging and critical for practical applications. Each configuration was evaluated using metrics including accuracy, precision, recall, and F1-score, with particular attention to both leak and no-leak classification performance.
+Performance was evaluated using [evaluation approach] for [class 1] versus [class 2] scenarios, with the [challenging scenario] being the most challenging and critical for practical applications. Each configuration was evaluated using metrics including [metric 1], [metric 2], [metric 3], and [metric 4], with particular attention to both [class 1] and [class 2] classification performance.
 
-\section{Background Subtraction Methods Comparison}
+\section{[Method Types] Comparison}
 
 \subsection{Visual Comparison}
 
-Figure \ref{fig:background_comparison} illustrates the outcomes of various background removal techniques using a class 5 leak scenario. The original infrared frame shows a methane plume with small cloud formations. When processed with different background subtraction techniques, we observe that both Moving Average and our Running Average method better preserve the plume connectivity throughout the structure compared to Custom Gaussian Mixture Model (CGMM). However, all three methods effectively isolate the methane plume from the background.
+% INSTRUCTIONS: Replace this with description of your comparison figures
+% Example: Figure \ref{fig:method_comparison} illustrates the outcomes of various [processing techniques] using a [sample scenario]. The original [data type] shows [description]. When processed with different [method types], we observe that both [Method 1] and our [Method 2] better preserve the [important features] compared to [Method 3]. However, all three methods effectively [achieve goal].
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}[t]{0.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{images/original_frame.png}
-\caption{Original infrared frame}
-\label{fig:original}
-\end{subfigure}%
-\hfill%
-\begin{subfigure}[t]{0.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{images/moving_average.png}
-\caption{Moving Average}
-\label{fig:moving_avg}
-\end{subfigure}%
-\hfill%
-\begin{subfigure}[t]{0.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{images/cgmm.png}
-\caption{Custom GMM}
-\label{fig:cgmm}
-\end{subfigure}%
-\hfill%
-\begin{subfigure}[t]{0.24\textwidth}
-\centering
-\includegraphics[width=\textwidth]{images/running_average.png}
-\caption{Running Average}
-\label{fig:running_avg}
-\end{subfigure}
-\caption{Comparison of background subtraction methods for methane leak detection at 6.9 m distance during class 5 leak duration of GasVid Dataset}
-\label{fig:background_comparison}
-\end{figure}
+% INSTRUCTIONS: Add your comparison figures here
+% Replace this comment block with your own figure showing method comparisons
+% Example structure:
+% \begin{figure}[htbp]
+% \centering
+% \begin{subfigure}[t]{0.24\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{images/your_original_image.png}
+% \caption{Original [data type]}
+% \label{fig:original}
+% \end{subfigure}%
+% ... add more subfigures as needed
+% \caption{Comparison of [method types] for [application]}
+% \label{fig:method_comparison}
+% \end{figure}
 
 \subsection{Overall Classification Performance}
 
-Table \ref{tab:classification_performance} shows the classification metrics for different background subtraction methods, emphasizing precision, recall, and F1-score for both leak and no-leak classes.
+Table \ref{tab:classification_performance} shows the classification metrics for different [method types], emphasizing precision, recall, and F1-score for both [class 1] and [class 2] classes.
 
 \begin{table}[htbp]
-\caption{Classification Performance (\%) of Different Background Subtraction Methods}
+\caption{Classification Performance (\%) of Different [Method Types]}
 \label{tab:classification_performance}
 \begin{tabular}{|l|c|c|c|c|c|c|c|}
 \hline
-& \textbf{Overall} & \multicolumn{3}{c|}{\textbf{No-Leak Class}} & \multicolumn{3}{c|}{\textbf{Leak Class}} \\
+& \textbf{Overall} & \multicolumn{3}{c|}{\textbf{[Class 1]}} & \multicolumn{3}{c|}{\textbf{[Class 2]}} \\
 \cline{3-8}
 \textbf{Method} & \textbf{Accuracy} & \textbf{Prec.} & \textbf{Recall} & \textbf{F1} & \textbf{Prec.} & \textbf{Recall} & \textbf{F1} \\
 \hline
-Running Average & 99.71 & 97.75 & 100 & 98.86 & 100 & 99.67 & 99.84 \\
+[Method 2] & [Value 1] & [Value 2] & [Value 3] & [Value 4] & [Value 5] & [Value 6] & [Value 7] \\
 \hline
-Moving Average & 99.58 & 97.05 & 99.69 & 98.35 & 99.95 & 99.57 & 99.76 \\
+[Method 1] & [Value 8] & [Value 9] & [Value 10] & [Value 11] & [Value 12] & [Value 13] & [Value 14] \\
 \hline
-Custom GMM & 99.65 & 97.30 & 99.95 & 98.61 & 99.99 & 99.60 & 99.80 \\
+[Method 3] & [Value 15] & [Value 16] & [Value 17] & [Value 18] & [Value 19] & [Value 20] & [Value 21] \\
 \hline
 \end{tabular}
 \end{table}
 
-The Running Average method achieved the highest overall accuracy at 99.71\%, outperforming both the Moving Average method (99.58\%) and Custom GMM (99.65\%). This improvement, while seemingly marginal, is considerable when combined with the benefits in computational speed.
+The [Method 2] achieved the highest overall accuracy at [percentage]\%, outperforming both the [Method 1] ([percentage]\%) and [Method 3] ([percentage]\%). This improvement, while seemingly marginal, is considerable when combined with the benefits in computational speed.
 
 \subsection{Confusion Matrix Analysis}
 
 The confusion matrices in Table \ref{tab:confusion_matrix} provide insights into the classification performance of each method.
 
 \begin{table}[htbp]
-\caption{Confusion Matrix Analysis of Background Subtraction Methods}
+\caption{Confusion Matrix Analysis of [Method Types]}
 \label{tab:confusion_matrix}
 \begin{tabular}{|l|c|c|c|c|}
 \hline
 \textbf{Method} & \textbf{True} & \textbf{False} & \textbf{True} & \textbf{False} \\
-& \textbf{No-Leak} & \textbf{No-Leak} & \textbf{Leak} & \textbf{Leak} \\
+& \textbf{[Class 1]} & \textbf{[Class 1]} & \textbf{[Class 2]} & \textbf{[Class 2]} \\
 \hline
-Running Average & 1912 & 0 & 13340 & 44 \\
+[Method 2] & [Value 1] & [Value 2] & [Value 3] & [Value 4] \\
 \hline
-Moving Average & 1906 & 6 & 13326 & 58 \\
+[Method 1] & [Value 5] & [Value 6] & [Value 7] & [Value 8] \\
 \hline
-Custom GMM & 1911 & 1 & 13331 & 53 \\
+[Method 3] & [Value 9] & [Value 10] & [Value 11] & [Value 12] \\
 \hline
 \end{tabular}
 \end{table}
 
-The Running Average algorithm exhibits perfect performance with zero false positives, a significant improvement over the Custom GMM (1 false positive) and Moving Average algorithm (6 false positives). This elimination of false alarms is critical for field deployment, where false positives can lead to unnecessary inspections and related costs. Additionally, the Running Average method achieves the lowest false negative rate (44) compared to Custom GMM (53) and Moving Average (58), indicating superior sensitivity to actual leaks.
+The [Method 2] exhibits [performance description] with [error metric] [error type], a significant improvement over the [Method 3] ([error count] [error type]) and [Method 1] ([error count] [error type]). This [improvement description] is critical for field deployment, where [error type] can lead to [consequence]. Additionally, the [Method 2] achieves the lowest [error metric] ([count]) compared to [Method 3] ([count]) and [Method 1] ([count]), indicating superior [performance aspect].
 
 \subsection{Pairwise Classification Performance}
 
-To compare detection performance across different leak sizes, we conducted pairwise comparisons for no-leak (class 0) with each of the leak classes (classes 1-7). Table \ref{tab:pairwise_comparison} provides these results, with emphasis on the challenging 0-1 pair that represents initial leak detection.
+To compare detection performance across different [scenarios], we conducted pairwise comparisons for [baseline] with each of the [test scenarios]. Table \ref{tab:pairwise_comparison} provides these results, with emphasis on the challenging [challenging pair] that represents [critical scenario].
 
 \begin{table}[htbp]
-\caption{Pairwise Accuracy Comparison (\%) Across Different Background Subtraction Methods}
+\caption{Pairwise Accuracy Comparison (\%) Across Different [Method Types]}
 \label{tab:pairwise_comparison}
 \begin{tabular}{|l|c|c|c|c|c|c|c|}
 \hline
-\textbf{Method} & \textbf{0-1} & \textbf{0-2} & \textbf{0-3} & \textbf{0-4} & \textbf{0-5} & \textbf{0-6} & \textbf{0-7} \\
+\textbf{Method} & \textbf{[Pair 1]} & \textbf{[Pair 2]} & \textbf{[Pair 3]} & \textbf{[Pair 4]} & \textbf{[Pair 5]} & \textbf{[Pair 6]} & \textbf{[Pair 7]} \\
 \hline
-Running Average & 98.9 & 100.0 & 100.0 & 100.0 & 100.0 & 100.0 & 99.9 \\
+[Method 2] & [Value 1] & [Value 2] & [Value 3] & [Value 4] & [Value 5] & [Value 6] & [Value 7] \\
 \hline
-Moving Average & 98.4 & 99.8 & 99.8 & 99.8 & 99.8 & 99.8 & 99.8 \\
+[Method 1] & [Value 8] & [Value 9] & [Value 10] & [Value 11] & [Value 12] & [Value 13] & [Value 14] \\
 \hline
-Custom GMM & 98.6 & 100.0 & 100.0 & 100.0 & 100.0 & 100.0 & 100.0 \\
+[Method 3] & [Value 15] & [Value 16] & [Value 17] & [Value 18] & [Value 19] & [Value 20] & [Value 21] \\
 \hline
 \end{tabular}
 \end{table}
 
-The Running Average method demonstrates excellent performance on all pairwise comparisons, with perfect 100\% accuracy for most leak classifications (0-2 through 0-6 pairs) and 98.9\% accuracy for the most challenging small leak scenario (0-1 pair), outperforming both Custom GMM (98.6\%) and Moving Average (98.4\%) for this critical case.
+The [Method 2] demonstrates excellent performance on all pairwise comparisons, with [performance description] for most [scenario type] and [percentage]\% accuracy for the most challenging [challenging scenario], outperforming both [Method 3] ([percentage]\%) and [Method 1] ([percentage]\%) for this critical case.
 
 \section{Computational Efficiency Analysis}
 
-Table \ref{tab:processing_efficiency} compares the computational efficiency of the background subtraction methods in terms of total video processing time and the average time per frame.
+Table \ref{tab:processing_efficiency} compares the computational efficiency of the [method types] in terms of total [processing metric] and the average [time metric].
 
 \begin{table}[htbp]
-\caption{Computational Efficiency Comparison of Background Subtraction Methods}
+\caption{Computational Efficiency Comparison of [Method Types]}
 \label{tab:processing_efficiency}
 \begin{tabular}{|l|c|c|}
 \hline
-\textbf{Method} & \textbf{Average Video} & \textbf{Average Processing} \\
-& \textbf{Processing Time (s)} & \textbf{Time/Frame (ms)} \\
+\textbf{Method} & \textbf{Average [Processing]} & \textbf{Average [Time Metric]} \\
+& \textbf{Time ([Unit])} & \textbf{per [Unit] ([Time Unit])} \\
 \hline
-Running Average & 775.07 & 35.88 \\
-Moving Average & 2319.73 & 107.39 \\
-Custom GMM & 891.19 & 41.26 \\
+[Method 2] & [Value 1] & [Value 2] \\
+[Method 1] & [Value 3] & [Value 4] \\
+[Method 3] & [Value 5] & [Value 6] \\
 \hline
 \end{tabular}
 \end{table}
 
-The Running Average method is computationally more efficient, taking on average 35.88 ms to process frames, which is approximately 3× faster than the traditional Moving Average method with 210 frames (107.39 ms) and 13\% faster than the Custom GMM (41.26 ms). This speedup in processing is invaluable for real-time applications, where rapid detection enables more immediate responses to leaks.
+The [Method 2] is computationally more efficient, taking on average [time value] [time unit] to process [data units], which is approximately [multiplier]× faster than the traditional [Method 1] with [parameter] ([time value] [time unit]) and [percentage]\% faster than the [Method 3] ([time value] [time unit]). This speedup in processing is invaluable for real-time applications, where rapid [processing] enables more immediate responses to [events].
 
-The improved efficiency stems from the algorithmic simplicity of the Running Average approach—updating the background model requires only the current frame and previous background model, avoiding storing and processing multiple frames. This significantly reduces both memory space and computational complexity without compromising high detection accuracy.
+The improved efficiency stems from the algorithmic simplicity of the [Method 2] approach—[process description] requires only the [current input] and [previous state], avoiding [expensive operation]. This significantly reduces both memory space and computational complexity without compromising high [performance metric].
 
-\section{Video Frame Scaling Results}
+\section{[Parameter] Scaling Results}
 
-To assess the feasibility of deploying methane leak detection systems on resource-constrained devices, we experimented with the impact of video frame resolution reduction on model size and detection performance.
+To assess the feasibility of deploying [application] systems on resource-constrained devices, we experimented with the impact of [parameter] reduction on model size and [performance metric].
 
 \subsection{Model Size Comparison}
 
-Table \ref{tab:model_size_comparison} compares key metrics across three video frame sizes using the Running Average method for background subtraction.
+Table \ref{tab:model_size_comparison} compares key metrics across [number] [parameter] sizes using the [Method 2] for [processing].
 
 \begin{table}[htbp]
-\caption{Model Size Comparison Across Different Video Frame Resolutions}
+\caption{Model Size Comparison Across Different [Parameter] Values}
 \label{tab:model_size_comparison}
 \begin{tabular}{|l|c|c|}
 \hline
-\textbf{Video Frame Size} & \textbf{Parameters} & \textbf{Model Size} \\
+\textbf{[Parameter] Size} & \textbf{Parameters} & \textbf{Model Size} \\
 \hline
-240×320×1 & 413,386 (1.58 MB) & 4934 KB \\
-120×160×1 & 249,546 (974.79 KB) & 3014 KB \\
-60×80×1 & 188,106 (734.79 KB) & 2294 KB \\
+[Value 1] & [Count 1] ([Size 1] MB) & [Size Value 1] KB \\
+[Value 2] & [Count 2] ([Size 2] KB) & [Size Value 2] KB \\
+[Value 3] & [Count 3] ([Size 3] KB) & [Size Value 3] KB \\
 \hline
 \end{tabular}
 \end{table}
 
-Resolution reduction results in dramatic decreases in model parameters and size—the half-resolution model (120×160) requires 39\% fewer parameters than the full-resolution model, while the quarter-resolution model (60×80) requires 55\% fewer parameters. This reduction directly translates to lower memory requirements and computational costs, which are crucial factors for edge deployment.
+[Parameter] reduction results in dramatic decreases in model parameters and size—the [reduced version] model requires [percentage]\% fewer parameters than the [full version] model, while the [minimal version] model requires [percentage]\% fewer parameters. This reduction directly translates to lower memory requirements and computational costs, which are crucial factors for [deployment target].
 
-\subsection{Classification Performance at Reduced Resolutions}
+\subsection{Classification Performance at Reduced [Parameters]}
 
-Table \ref{tab:resolution_performance} presents the classification metrics for each resolution using the Running Average background subtraction technique.
+Table \ref{tab:parameter_performance} presents the classification metrics for each [parameter value] using the [Method 2] technique.
 
 \begin{table}[htbp]
-\caption{Classification Performance (\%) Across Different Video Resolutions}
-\label{tab:resolution_performance}
+\caption{Classification Performance (\%) Across Different [Parameter] Values}
+\label{tab:parameter_performance}
 \setlength{\tabcolsep}{5pt}
 \centering
-\begin{tabular}{|l|c|c|c|c|c|c|c|}
-\hline
-\multirow{2}{*}{\textbf{Resolution}} & \textbf{Overall} & \multicolumn{3}{c|}{\textbf{No-Leak Class}} & \multicolumn{3}{c|}{\textbf{Leak Class}} \\
-\cline{3-8}
- & \textbf{Accuracy} & \textbf{Prec.} & \textbf{Recall} & \textbf{F1} & \textbf{Prec.} & \textbf{Recall} & \textbf{F1} \\
-\hline
-240×320 & 99.71 & 97.75 & 100 & 98.86 & 100 & 99.67 & 99.84 \\
-\hline
-120×160 & 99.27 & 94.78 & 99.63 & 97.14 & 99.95 & 99.22 & 99.58 \\
-\hline
-60×80 & 98.14 & 87.68 & 99.01 & 93.00 & 99.86 & 98.01 & 98.93 \\
-\hline
-\end{tabular}
+  \begin{tabular}{|l|c|c|c|c|c|c|c|}
+  \hline
+  \multirow{2}{*}{\textbf{Parameter}} & \textbf{Overall} & \multicolumn{3}{c|}{\textbf{Class 1}} & \multicolumn{3}{c|}{\textbf{Class 2}} \\
+  \cline{3-8}
+   & \textbf{Accuracy} & \textbf{Prec.} & \textbf{Recall} & \textbf{F1} & \textbf{Prec.} & \textbf{Recall} & \textbf{F1} \\
+  \hline
+  Value 1 & XX.X & XX.X & XX.X & XX.X & XX.X & XX.X & XX.X \\
+  \hline
+  Value 2 & XX.X & XX.X & XX.X & XX.X & XX.X & XX.X & XX.X \\
+  \hline
+  Value 3 & XX.X & XX.X & XX.X & XX.X & XX.X & XX.X & XX.X \\
+  \hline
+  \end{tabular}
 \end{table}
 
+The results show a gradual performance decline as the [parameter] [changes], with overall accuracy [changing] from [percentage]\% at [baseline] to [percentage]\% at [reduced level] and [percentage]\% at [minimal level]. Most significantly, [performance aspect] is impacted most with [parameter change], from [percentage]\% at [baseline] to [percentage]\% at [minimal level].
 
-The results show a gradual performance decline as the resolution decreases, with overall accuracy dropping from 99.71\% at full resolution to 99.27\% at half resolution and 98.14\% at quarter resolution. Most significantly, precision on the no-leak class is impacted most with decreased resolution, from 97.75\% at full resolution to 87.68\% at quarter resolution.
+Nevertheless, even at [minimal level], the model achieves over [percentage]\% accuracy in classifying all samples, displaying remarkable robustness to [parameter] reduction.
 
-Nevertheless, even at quarter resolution, the model achieves over 98\% accuracy in classifying all samples, displaying remarkable robustness to resolution reduction.
+\subsection{Pairwise Comparison Across [Parameter] Values}
 
-\subsection{Pairwise Comparison Across Video Frame Resolutions}
-
-Table \ref{tab:pairwise_resolution} presents the pairwise accuracy comparison for different video frame sizes, highlighting the impact of resolution on detecting leaks of varying sizes.
+Table \ref{tab:pairwise_parameter} presents the pairwise accuracy comparison for different [parameter] sizes, highlighting the impact of [parameter] on detecting [scenarios] of varying [characteristics].
 
 \begin{table}[htbp]
-\caption{Pairwise Accuracy Comparison (\%) Across Different Video Frame Resolutions}
-\label{tab:pairwise_resolution}
+\caption{Pairwise Accuracy Comparison (\%) Across Different [Parameter] Values}
+\label{tab:pairwise_parameter}
 \begin{tabular}{|l|c|c|c|c|c|c|c|}
 \hline
-\textbf{Resolution} & \textbf{0-1} & \textbf{0-2} & \textbf{0-3} & \textbf{0-4} & \textbf{0-5} & \textbf{0-6} & \textbf{0-7} \\
+\textbf{[Parameter]} & \textbf{[Pair 1]} & \textbf{[Pair 2]} & \textbf{[Pair 3]} & \textbf{[Pair 4]} & \textbf{[Pair 5]} & \textbf{[Pair 6]} & \textbf{[Pair 7]} \\
 \hline
-240×320 & 98.9 & 100.0 & 100.0 & 100.0 & 100.0 & 100.0 & 99.9 \\
+[Value 1] & [Perf 1] & [Perf 2] & [Perf 3] & [Perf 4] & [Perf 5] & [Perf 6] & [Perf 7] \\
 \hline
-120×160 & 97.1 & 99.8 & 99.8 & 99.8 & 99.8 & 99.8 & 99.8 \\
+[Value 2] & [Perf 8] & [Perf 9] & [Perf 10] & [Perf 11] & [Perf 12] & [Perf 13] & [Perf 14] \\
 \hline
-60×80 & 92.6 & 99.5 & 99.5 & 99.5 & 99.5 & 99.5 & 99.5 \\
+[Value 3] & [Perf 15] & [Perf 16] & [Perf 17] & [Perf 18] & [Perf 19] & [Perf 20] & [Perf 21] \\
 \hline
 \end{tabular}
 \end{table}
 
-The pairwise comparison reveals an important aspect: resolution reduction primarily impacts the detection of small leaks (0-1 pair), where accuracy drops from 98.9\% at full resolution to 97.1\% at half resolution and 92.6\% at quarter resolution. Detection of medium to large leaks (0-2 through 0-7 pairs) is remarkably robust, with accuracy consistently above 99.5\% even at quarter resolution.
+The pairwise comparison reveals an important aspect: [parameter] reduction primarily impacts the [detection type] ([challenging pair]), where accuracy [changes] from [percentage]\% at [baseline] to [percentage]\% at [reduced level] and [percentage]\% at [minimal level]. Detection of [other scenarios] is remarkably robust, with accuracy consistently above [percentage]\% even at [minimal level].
 
-This pattern suggests that smaller leaks have more subtle visual patterns that require higher resolution for reliable detection, while larger leaks produce more prominent features that remain detectable even at low resolutions.
+This pattern suggests that [challenging scenarios] have more [characteristics] that require [high parameter value] for reliable [detection/processing], while [easier scenarios] produce more [prominent features] that remain [detectable/processable] even at [low parameter values].
 
 \section{Error Analysis}
 
-To provide deeper insights into system limitations and guide practical deployment decisions, we conducted comprehensive error analysis across resolutions using the Running Average method to understand system limitations and guide deployment decisions. Figure \ref{fig:error_analysis} shows representative error cases at different spatial resolutions.
+To provide deeper insights into system limitations and guide practical deployment decisions, we conducted comprehensive error analysis across [parameter values] using the [Method 2] to understand system limitations and guide deployment decisions. 
+% INSTRUCTIONS: Add reference to your error analysis figures here
+% Example: Figure \ref{fig:error_analysis} shows representative error cases at different [parameter levels].
 
-\begin{figure}[htbp]
-\centering
-\begin{subfigure}[t]{0.31\textwidth}
-\centering
-\includegraphics[width=\textwidth]{images/fn_sample_240x320.png}
-\caption{False Negative: Subtle leak missed at full resolution}
-\label{fig:fn_full}
-\end{subfigure}
-\hfill
-\begin{subfigure}[t]{0.31\textwidth}
-\centering
-\includegraphics[width=\textwidth]{images/fn_sample_120x160.png}
-\caption{False Negative: Small leak detection failure}
-\label{fig:fn_half}
-\end{subfigure}
-\hfill
-\begin{subfigure}[t]{0.31\textwidth}
-\centering
-\includegraphics[width=\textwidth]{images/fp_sample_60x80.png}
-\caption{False Positive: Background artifact misclassified}
-\label{fig:fp_quarter}
-\end{subfigure}
-\caption{Representative error cases showing detection challenges. (a) Minimal leak signature with low contrast, (b) small leak with dispersed plume pattern, and (c) background noise (windsock) misinterpreted as leak signature.}
-\label{fig:error_analysis}
-\end{figure}
+% INSTRUCTIONS: Add your error analysis figures here
+% Replace this comment block with your own figures showing error cases
+% Example structure:
+% \begin{figure}[htbp]
+% \centering
+% \begin{subfigure}[t]{0.31\textwidth}
+% \centering
+% \includegraphics[width=\textwidth]{images/your_error_case1.png}
+% \caption{[Error Type 1]: [Description]}
+% \label{fig:error1}
+% \end{subfigure}
+% ... add more subfigures as needed
+% \caption{Representative error cases showing [challenges]}
+% \label{fig:error_analysis}
+% \end{figure}
 
-\subsection{Full Resolution (240×320) Error Analysis}
+\subsection{[Parameter Level 1] Error Analysis}
 
-At full resolution, the system achieved zero false positives with 44 false negatives (0.29\%), primarily from Class 1 scenarios with subtle leak signatures. These missed detections involve minimal visual contrast against background, representing challenging cases for automated detection. The false negative cases typically occur when the methane plume has extremely low density or when environmental conditions (such as wind dispersion) significantly reduce the plume's visual signature.
+At [parameter level 1], the system achieved [error metric] with [error count] [error type] ([percentage]\%), primarily from [scenario type] with [characteristics]. These [missed cases] involve [description], representing challenging cases for automated [processing]. The [error type] cases typically occur when [conditions].
 
-\subsection{Half-Resolution (120×160) Error Analysis}
+\subsection{[Parameter Level 2] Error Analysis}
 
-The half-resolution model introduced 7 false positives (0.05\%) from misinterpreted background variations and 105 false negatives (0.69\%), mainly affecting small leak detection. Resolution reduction impacts the system's ability to discriminate between subtle leak characteristics and background noise. The increase in false negatives is primarily attributed to the loss of fine-grained spatial details that are crucial for detecting small, dispersed methane plumes.
+The [parameter level 2] model introduced [error count] [error type] ([percentage]\%) from [error cause] and [error count] [error type] ([percentage]\%), mainly affecting [affected area]. [Parameter] reduction impacts the system's ability to [capability]. The increase in [error type] is primarily attributed to [cause].
 
-\subsection{Quarter-Resolution (60×80) Error Analysis}
+\subsection{[Parameter Level 3] Error Analysis}
 
-Error rates increased significantly to 19 false positives (0.12\%) and 266 false negatives (1.74\%) at quarter resolution. False positives demonstrate increased sensitivity to background artifacts when spatial detail is insufficient, while false negatives confirm degraded small leak detection capability. The system begins to misinterpret moving background elements such as windsocks and cloud formations as potential leak signatures due to the reduced spatial resolution.
+Error rates increased significantly to [error count] [error type] ([percentage]\%) and [error count] [error type] ([percentage]\%) at [parameter level 3]. [Error type] demonstrate [characteristic] when [condition], while [error type] confirm [degraded capability]. The system begins to [behavior] due to [cause].
 
 \subsection{Error Pattern Analysis}
 
-The analysis reveals a clear trade-off between computational efficiency and detection sensitivity:
+The analysis reveals a clear trade-off between [efficiency] and [performance]:
 
 \begin{enumerate}
-\item \textbf{False Negatives:} Primarily occur with minimal leak signatures and dispersed plume patterns that present insufficient visual contrast for reliable detection. These cases represent the fundamental limitation of optical-based detection methods when dealing with extremely subtle gas emissions.
+\item \textbf{[Error Type 1]:} Primarily occur with [characteristics] that present [issue] for reliable [processing]. These cases represent the fundamental limitation of [approach] when dealing with [extreme cases].
 
-\item \textbf{False Positives:} Occur when background features such as windsock movements or cloud formations are misinterpreted as leak signatures, particularly at reduced resolutions where spatial detail is insufficient for proper discrimination.
+\item \textbf{[Error Type 2]:} Occur when [background features] are misinterpreted as [target], particularly at [parameter levels] where [detail] is insufficient for proper [discrimination].
 
-\item \textbf{Resolution Impact:} Full resolution ensures maximum sensitivity for safety-critical applications, while half resolution provides optimal balance for medium-to-large leak detection with reduced computational overhead.
+\item \textbf{[Parameter] Impact:} [High parameter] ensures maximum [performance aspect] for [critical applications], while [medium parameter] provides optimal balance for [use case] with reduced [cost].
 \end{enumerate}
 
 \section{Discussion}
 
-\subsection{Background Subtraction Method Performance}
+\subsection{[Method Types] Performance}
 
-The comparative analysis across different background subtraction methods reveals several key insights:
+The comparative analysis across different [method types] reveals several key insights:
 
 \begin{enumerate}
-\item \textbf{Superior Accuracy:} The Running Average method achieved the highest overall accuracy (99.71\%) with exceptional precision for leak detection (100\%) and the lowest false positive rate.
+\item \textbf{Superior [Performance Aspect]:} The [Method 2] achieved the highest overall [metric] ([percentage]\%) with exceptional [performance measure] and the lowest [error metric].
 
-\item \textbf{Computational Efficiency:} The Running Average method demonstrated the best computational efficiency with 3× faster processing compared to Moving Average, making it suitable for real-time applications.
+\item \textbf{Computational Efficiency:} The [Method 2] demonstrated the best computational efficiency with [improvement factor]× faster processing compared to [Method 1], making it suitable for [applications].
 
-\item \textbf{Adaptive Capability:} The dynamic background modeling capability of Running Average effectively accounts for gradual changes in environmental conditions.
+\item \textbf{Adaptive Capability:} The [characteristic] of [Method 2] effectively accounts for [environmental changes].
 \end{enumerate}
 
-\subsection{Resolution Trade-offs}
+\subsection{[Parameter] Trade-offs}
 
-The study revealed important insights regarding the relationship between image resolution and detection performance:
+The study revealed important insights regarding the relationship between [parameter] and [performance]:
 
 \begin{enumerate}
-\item \textbf{Optimal Balance:} Half-resolution (120×160) images offer a favorable balance between computational efficiency and detection accuracy, with only 0.44\% accuracy decrease.
+\item \textbf{Optimal Balance:} [Medium parameter] offer a favorable balance between [efficiency] and [performance], with only [percentage]\% [metric] decrease.
 
-\item \textbf{Leak Size Dependency:} The impact of resolution reduction is highly dependent on leak size, with small leaks being more affected than larger ones.
+\item \textbf{[Scenario] Dependency:} The impact of [parameter] reduction is highly dependent on [scenario type], with [challenging scenarios] being more affected than [easier scenarios].
 
-\item \textbf{Practical Deployment:} Quarter-resolution models maintain excellent performance for medium to large leaks while maximizing computational efficiency.
+\item \textbf{Practical Deployment:} [Minimal parameter] models maintain excellent performance for [specific scenarios] while maximizing [efficiency].
 \end{enumerate}
 
 \subsection{Practical Implications}
@@ -305,11 +280,11 @@ The study revealed important insights regarding the relationship between image r
 The findings have significant implications for real-world deployment:
 
 \begin{enumerate}
-\item \textbf{Real-time Capability:} The 3× improvement in processing speed enables real-time monitoring in industrial environments.
+\item \textbf{Real-time Capability:} The [improvement factor]× improvement in [processing metric] enables [real-time capability] in [environments].
 
-\item \textbf{Cost-effective Implementation:} Zero false positives reduce unnecessary inspections and operational costs.
+\item \textbf{Cost-effective Implementation:} [Performance achievement] reduce [costs] and [operational impacts].
 
-\item \textbf{Edge Device Deployment:} Model size reduction of up to 55\% enables deployment on resource-constrained devices.
+\item \textbf{Edge Device Deployment:} Model size reduction of up to [percentage]\% enables deployment on [target devices].
 
-\item \textbf{Scalable Solutions:} The optimized approach can be scaled across multiple monitoring points in industrial facilities.
+\item \textbf{Scalable Solutions:} The optimized approach can be scaled across [multiple deployment scenarios].
 \end{enumerate}

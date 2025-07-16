@@ -1,25 +1,25 @@
 \chapter{METHODOLOGY}
 
-This chapter comprehensively describes the methodology employed in this study, covering the enhanced preprocessing pipeline, background subtraction techniques, video frame scaling approaches, and the 3D CNN architecture implementation. The proposed method enhances VideoGasNet for real-time methane detection by employing efficient preprocessing algorithms that reduce computational complexity while maintaining high classification accuracy.
+This chapter comprehensively describes the methodology employed in this study, covering the [proposed approach], [technique 1], [technique 2], and the [main algorithm] implementation. The proposed method enhances [baseline system] for [target application] by employing efficient [processing methods] that reduce [constraint metric] while maintaining high [performance metric].
 
 \section{Overview of Proposed Method}
 
-Our method enhances VideoGasNet for real-time methane detection through three key aspects: (1) adopting a running average for background subtraction, (2) evaluating the effect of video frame downscaling, and (3) modifying VideoGasNet and using it as a baseline model for comparative analysis.
+Our method enhances [baseline system] for [target application] through three key aspects: (1) adopting [technique 1] for [process 1], (2) evaluating the effect of [parameter optimization], and (3) modifying [baseline system] and using it as a baseline model for comparative analysis.
 
-The workflow follows a systematic approach to preprocess methane leak videos, apply advanced background subtraction techniques, and train 3D CNN models. The process begins with video segmentation to generate manageable data clips. These clips are preprocessed using background subtraction to isolate methane plumes effectively, after which they are used to train 3D CNNs for binary classification tasks.
+The workflow follows a systematic approach to preprocess [data type], apply advanced [processing techniques], and train [model type] models. The process begins with [data preparation step] to generate manageable data [units]. These [units] are preprocessed using [technique] to [goal] effectively, after which they are used to train [model type] for [task type] tasks.
 
 Key components of the workflow include:
 
 \begin{enumerate}
-\item \textbf{Data Preprocessing:} Video segmentation, normalization, and background subtraction using three different methods
-\item \textbf{Model Design and Training:} Development of 3D CNN architectures for classification tasks
-\item \textbf{Model Optimization:} Image resolution reduction to enable deployment on resource-constrained devices
-\item \textbf{Evaluation:} Assessment of model performance using structured datasets and appropriate metrics
+\item \textbf{Data Preprocessing:} [Process 1], [process 2], and [process 3] using [number] different methods
+\item \textbf{Model Design and Training:} Development of [model architecture] for [task] tasks
+\item \textbf{Model Optimization:} [Parameter] reduction to enable deployment on [target environment]
+\item \textbf{Evaluation:} Assessment of model performance using [evaluation methods] and appropriate metrics
 \end{enumerate}
 
 \section{Dataset Preparation}
 
-We partitioned the selected GasVid videos into two groups: separator 1 for testing and separator 2 for training/validation (80/20 split). The dataset split ensures clean evaluation of the model's performance by maintaining separation between training and testing data sources.
+We partitioned the selected [dataset name] into two groups: [group 1] for testing and [group 2] for training/validation ([ratio] split). The dataset split ensures clean evaluation of the model's performance by maintaining separation between training and testing data sources.
 
 \begin{table}[htbp]
 \caption{Class Distribution Across Dataset Splits Before Augmentation}
@@ -27,177 +27,177 @@ We partitioned the selected GasVid videos into two groups: separator 1 for testi
 % For screenshot style, replace with: \includegraphics[width=\textwidth]{images/table_class_distribution.png}
 \begin{tabular}{|l|c|c|c|}
 \hline
-\textbf{Dataset Split} & \textbf{No-Leak} & \textbf{Leak} & \textbf{Ratio} \\
-& \textbf{(Class 0)} & \textbf{(Classes 1–7)} & \textbf{(No-Leak:Leak)} \\
+\textbf{Dataset Split} & \textbf{[Class 1]} & \textbf{[Class 2]} & \textbf{Ratio} \\
+& \textbf{(Class 0)} & \textbf{(Classes 1–N)} & \textbf{([Class 1]:[Class 2])} \\
 \hline
-Training & 2,298 & 15,984 & 1:6.95 \\
-Validation & 570 & 4,041 & 1:7.09 \\
-Test & 1,912 & 13,384 & 1:7.00 \\
+Training & [Number 1] & [Number 2] & [Ratio 1] \\
+Validation & [Number 3] & [Number 4] & [Ratio 2] \\
+Test & [Number 5] & [Number 6] & [Ratio 3] \\
 \hline
 \end{tabular}
 \end{table}
 
-To address the class imbalance shown in Table \ref{tab:class_distribution}, data augmentation was applied exclusively to the training dataset, increasing "no-leak" samples to 15,984 and achieving a balanced 1:1 ratio. Custom augmentation methods introduced diversity given the dataset's limited variability. The augmentation techniques included:
+To address the class imbalance shown in Table \ref{tab:class_distribution}, data augmentation was applied exclusively to the training dataset, increasing "[class 1]" samples to [target number] and achieving a balanced 1:1 ratio. Custom augmentation methods introduced diversity given the dataset's limited variability. The augmentation techniques included:
 
 \begin{enumerate}
-\item \textbf{Random horizontal flipping} (applied with probability p = 0.5) to simulate orientation variations
-\item \textbf{Random rotation} (-10° to +10°, p = 0.5) to mimic perspective shifts
+\item \textbf{[Augmentation 1]} (applied with probability p = [value]) to simulate [variation type]
+\item \textbf{[Augmentation 2]} ([parameter range], p = [value]) to mimic [variation type]
 \end{enumerate}
 
-For each sample, 1 to 2 augmentations are randomly selected and applied sequentially, ensuring diversity without over-altering the methane plumes' dynamic shapes.
+For each sample, [number] to [number] augmentations are randomly selected and applied sequentially, ensuring diversity without over-altering the [data characteristics].
 
-\section{Background Subtraction Methods}
+\section{[Primary Processing] Methods}
 
-Background subtraction isolates potential methane plumes from the background. We implemented and compared three approaches, each with distinct computational characteristics.
+[Primary processing] isolates potential [target objects] from the [background]. We implemented and compared [number] approaches, each with distinct computational characteristics.
 
-\subsection{Moving Average vs. Running Average}
+\subsection{[Method 1] vs. [Method 2]}
 
-In the original VideoGasNet \cite{wang2022videogasnet}, a background image for each frame was created as a moving median of the previous 210 images. While effective for plume isolation, this method requires significant computation. Our proposed running average method substantially reduces computational demands through an exponential weighting function:
+In the original [baseline system] \cite{sample2022reference}, a [processing result] for each [data unit] was created as a [mathematical operation] of the previous [number] [data units]. While effective for [goal], this method requires significant computation. Our proposed [method 2] substantially reduces computational demands through an exponential weighting function:
 
 \begin{equation}
-B_t = (1 - \lambda)B_{t-1} + \lambda I_t
-\label{eq:running_average}
+M_t = (1 - \lambda)M_{t-1} + \lambda D_t
+\label{eq:method_equation}
 \end{equation}
 
-where $B_t$ is the background model at time t, $I_t$ is the current frame at time t, and $\lambda$ is the updating rate which determines the rate at which scene changes are incorporated into the background frame. An excessively large $\lambda$ can lead to artificial tails to be formed behind the moving objects \cite{yi2010moving}. Here we chose to use $\lambda = 0.01$ to control how quickly the model adapts to changes.
+where $M_t$ is the [model] at time t, $D_t$ is the current [data unit] at time t, and $\lambda$ is the updating rate which determines the rate at which [changes] are incorporated into the [model]. An excessively large $\lambda$ can lead to [negative effect] \cite{sample2010reference}. Here we chose to use $\lambda = [value]$ to control how quickly the model adapts to changes.
 
-The advantages of using running average are threefold:
+The advantages of using [method 2] are threefold:
 \begin{enumerate}
-\item \textbf{Memory efficiency} by only storing the previous background model
-\item \textbf{Increased computational speed} by removing median calculation
-\item \textbf{Adaptive response} via a tunable learning rate parameter that adjusts the background adaptation speed to suit environmental conditions
+\item \textbf{Memory efficiency} by only storing the previous [model]
+\item \textbf{Increased computational speed} by removing [expensive operation]
+\item \textbf{Adaptive response} via a tunable learning rate parameter that adjusts the [adaptation speed] to suit [environmental conditions]
 \end{enumerate}
 
-The foreground mask is generated by thresholding the absolute difference between current frame and background model:
+The [output mask] is generated by thresholding the absolute difference between current [data unit] and [model]:
 
 \begin{equation}
-FG_t = |I_t - B_t| > T
-\label{eq:foreground_mask}
+O_t = |D_t - M_t| > T
+\label{eq:output_mask}
 \end{equation}
 
-where $FG_t$ is the foreground mask at time t, and T = 15 is our empirical threshold that distinguishes foreground from background. We refine this mask through a sequence of morphological operations (opening, closing, erosion) using a 3 × 3 kernel, eliminating small components (< 80 pixels), and applying a custom sharpening filter.
+where $O_t$ is the [output mask] at time t, and T = [threshold value] is our empirical threshold that distinguishes [target] from [background]. We refine this mask through a sequence of morphological operations ([operation 1], [operation 2], [operation 3]) using a [kernel size] kernel, eliminating small components (< [size] pixels), and applying a custom [filter type] filter.
 
-\subsection{Optical Flow Integration}
+\subsection{[Additional Technique] Integration}
 
-We integrated optical flow analysis to distinguish between regular environmental motion (a windsock, clouds) and methane plumes. Using Farneback's algorithm \cite{farneback2003two} with optimised parameters, we identify and exclude regions with characteristic non-gas movement patterns from the foreground mask. This approach significantly reduces false positives while maintaining sensitivity to actual gas leaks, enabling more reliable detection in environments with moderate movement.
+We integrated [additional technique] analysis to distinguish between [noise type] and [target objects]. Using [algorithm name] \cite{sample2003reference} with optimised parameters, we identify and exclude regions with characteristic [unwanted patterns] from the [output mask]. This approach significantly reduces [error type] while maintaining sensitivity to actual [targets], enabling more reliable detection in environments with [challenging conditions].
 
-\subsection{Custom Gaussian Mixture Model}
+\subsection{Custom [Algorithm] Model}
 
-To provide a baseline comparison for our Running Average method, we implemented a Custom Gaussian Mixture Model (CGMM) based on the adaptive approach by Zivkovic \cite{zivkovic2004improved, zivkovic2006efficient}. Our CGMM models use a mixture of K = 3 Gaussian distributions to track the temporal evolution of each pixel.
+To provide a baseline comparison for our [Method 2], we implemented a Custom [Algorithm] Model (C[Algorithm]) based on the adaptive approach by [Author] \cite{sample2004reference, sample2006reference}. Our C[Algorithm] models use a mixture of K = [number] [distributions] to track the temporal evolution of each [data element].
 
-Our CGMM implementation differs from standard MOG2 (Mixture of Gaussian v2) algorithm, which is available in OpenCV, in five key aspects:
+Our C[Algorithm] implementation differs from standard [standard algorithm] in [number] key aspects:
 \begin{enumerate}
-\item Using absolute difference instead of Mahalanobis distance for matching
-\item Sparse initialisation with a single active component
-\item Simplified background model using only the highest-weighted component
-\item Adaptive component management
-\item Outputting grayscale background image instead of binary background image
+\item Using [distance metric] instead of [standard metric] for matching
+\item [Modification 1] with a single active component
+\item Simplified [model component] using only the [selection criteria]
+\item Adaptive [component management]
+\item Outputting [output type] instead of [standard output type]
 \end{enumerate}
 
-The CGMM algorithm operates through the following steps:
+The C[Algorithm] operates through the following steps:
 
 \begin{algorithm}[!ht]
-\caption{Custom Gaussian Mixture Model Background Subtraction}
-\label{alg:cgmm}
+\caption{Custom [Algorithm] Model [Processing]}
+\label{alg:custom_algorithm}
 \begin{algorithmic}[1]
-\REQUIRE Current frame $I_t$, learning rate $\alpha=0.08$, components $K=3$
-\ENSURE Foreground mask $FG_t$
-\IF{first frame}
-    \STATE Initialize Gaussian components for each pixel
-    \STATE $\mu_{k=0} \leftarrow I_t$, $w_{k=0} \leftarrow 1.0$ for first component
-    \STATE $\sigma^2_k \leftarrow 15.0$ for all components
-    \STATE $FG_t \leftarrow$ zero matrix
+\REQUIRE Current [data unit] $D_t$, learning rate $\alpha=[value]$, components $K=[number]$
+\ENSURE [Output] $O_t$
+\IF{first [data unit]}
+    \STATE Initialize [components] for each [element]
+    \STATE $\mu_{k=0} \leftarrow D_t$, $w_{k=0} \leftarrow 1.0$ for first component
+    \STATE $\sigma^2_k \leftarrow [value]$ for all components
+    \STATE $O_t \leftarrow$ zero matrix
 \ELSE
-    \STATE $d_k \leftarrow |I_t - \mu_k|$ \COMMENT{Pixel-wise distances}
-    \STATE $M_k \leftarrow (d_k < 2.5 \cdot \sigma_k)$ \COMMENT{Match criteria}
+    \STATE $d_k \leftarrow |D_t - \mu_k|$ \COMMENT{[Element]-wise distances}
+    \STATE $M_k \leftarrow (d_k < [threshold] \cdot \sigma_k)$ \COMMENT{Match criteria}
     \STATE $M_{any} \leftarrow$ true if any component matches
     
     \STATE $w_k \leftarrow (1-\alpha) \cdot w_k$ for all $k$ \COMMENT{Decay all weights}
     
-    \FOR{each pixel with a match}
+    \FOR{each [element] with a match}
         \STATE $k_{best} \leftarrow$ component with highest weight among matches
         \STATE $w_{k_{best}} \leftarrow w_{k_{best}} + \alpha$
-        \STATE $\delta \leftarrow I_t - \mu_{k_{best}}$ 
+        \STATE $\delta \leftarrow D_t - \mu_{k_{best}}$ 
         \STATE $\mu_{k_{best}} \leftarrow \mu_{k_{best}} + \alpha \cdot \delta$
         \STATE $\sigma^2_{k_{best}} \leftarrow (1-\alpha) \cdot \sigma^2_{k_{best}} + \alpha \cdot \delta^2$
-        \STATE $\sigma^2_{k_{best}} \leftarrow \max(\sigma^2_{k_{best}}, 10.0)$ \COMMENT{Minimum variance  $\sigma^2_{k_{min}}$}
+        \STATE $\sigma^2_{k_{best}} \leftarrow \max(\sigma^2_{k_{best}}, [min_value])$ \COMMENT{Minimum variance  $\sigma^2_{k_{min}}$}
     \ENDFOR
     
-    \FOR{each pixel without a match}
+    \FOR{each [element] without a match}
         \STATE $k_{min} \leftarrow$ component with minimum weight
-        \STATE $\mu_{k_{min}} \leftarrow I_t$
-        \STATE $\sigma^2_{k_{min}} \leftarrow 15.0$ \COMMENT{Initial variance}
+        \STATE $\mu_{k_{min}} \leftarrow D_t$
+        \STATE $\sigma^2_{k_{min}} \leftarrow [value]$ \COMMENT{Initial variance}
         \STATE $w_{k_{min}} \leftarrow \alpha$
     \ENDFOR
     
     \STATE Normalize weights: $w_k \leftarrow w_k/\sum_j w_j$ for all $k$
     
-    \STATE $k_{max} \leftarrow$ component with maximum weight at each pixel
-    \STATE $BG_t \leftarrow \mu_{k_{max}}$ \COMMENT{Background model}
-    \STATE $FG_t \leftarrow |I_t - BG_t|$ \COMMENT{Generate foreground mask}
+    \STATE $k_{max} \leftarrow$ component with maximum weight at each [element]
+    \STATE $BG_t \leftarrow \mu_{k_{max}}$ \COMMENT{[Model] model}
+    \STATE $O_t \leftarrow |D_t - BG_t|$ \COMMENT{Generate [output]}
 \ENDIF
-\RETURN $FG_t$
+\RETURN $O_t$
 \end{algorithmic}
 \end{algorithm}
 
-\section{Video Frame Scaling}
+\section{[Parameter] Scaling}
 
-To further reduce computational costs, we investigated the effect of input video frame resolution on classification accuracy and processing speed. The original VideoGasNet processes video frames at 240×320 resolution with 15 frames per second (fps), creating significant computational costs.
+To further reduce computational costs, we investigated the effect of input [parameter] on classification accuracy and processing speed. The original [baseline system] processes [data] at [original dimensions] with [rate] ([unit]), creating significant computational costs.
 
-Our experiments evaluated three video frame sizes using 15 fps:
+Our experiments evaluated [number] [parameter] sizes using [constant parameter]:
 \begin{enumerate}
-\item \textbf{Original size:} 240 × 320 (baseline)
-\item \textbf{Half-reduced size:} 120 × 160 (75\% fewer pixels)
-\item \textbf{Quarter-reduced size:} 60 × 80 (93.75\% fewer pixels)
+\item \textbf{Original size:} [dimension 1] (baseline)
+\item \textbf{Reduced size:} [dimension 2] ([percentage]% fewer [units])
+\item \textbf{Minimal size:} [dimension 3] ([percentage]% fewer [units])
 \end{enumerate}
 
-Each size shares the same temporal dimension of 15 frames, while reducing spatial dimensions. Downscaling was performed using bicubic interpolation to preserve important features while minimising computational requirements. The 3D CNN architecture automatically scales its feature map dimensions through the convolutional and pooling layers while preserving the temporal dimension to effectively capture the dynamic nature of methane gas plumes.
+Each size shares the same [constant dimension], while reducing [variable dimensions]. [Scaling method] was performed using [interpolation method] to preserve important features while minimising computational requirements. The [model architecture] automatically scales its [feature components] through the [processing layers] while preserving the [important dimension] to effectively capture the [key characteristics].
 
-This reduction in resolution substantially decreases the number of operations required for both background subtraction and spatial-temporal CNN processing, along with a corresponding reduction in memory usage, making the system suitable for edge deployment.
+This reduction in [parameter] substantially decreases the number of operations required for both [process 1] and [process 2], along with a corresponding reduction in memory usage, making the system suitable for [deployment target].
 
-\section{3D CNN Architecture}
+\section{[Model] Architecture}
 
-Since our primary objective is improving the preprocessing techniques rather than the deep learning model itself, we reused the VideoGasNet architecture \cite{wang2022videogasnet}. However, we implemented specific modifications to optimise it for our binary classification task.
+Since our primary objective is improving the [preprocessing techniques] rather than the [model] itself, we reused the [baseline architecture] \cite{sample2022reference}. However, we implemented specific modifications to optimise it for our [task type] task.
 
 \subsection{Network Architecture}
 
-The 3D CNN architecture consists of the following components:
+The [model] architecture consists of the following components:
 
 \begin{enumerate}
-\item \textbf{Input Layer:} The network accepts input videos of dimension 15 × H × W × 1 (frames × height × width × channels), where H and W vary according to the selected resolution.
+\item \textbf{Input Layer:} The network accepts input [data] of dimension [dimensions] ([dimension descriptions]), where [variables] vary according to the selected [parameter].
 
-\item \textbf{Convolutional Blocks:} The backbone consists of four convolutional-pooling (Conv-Pool) blocks:
+\item \textbf{[Processing] Blocks:} The backbone consists of [number] [processing]-[operation] blocks:
     \begin{itemize}
-    \item Each block contains: 3D convolution → Layer normalisation → 3D MaxPooling → Dropout
-    \item The four Conv3D layers use 4, 8, 16, and 32 filters respectively
+    \item Each block contains: [layer type] → [normalization] → [pooling] → [regularization]
+    \item The [number] [layer type] use [filter numbers] filters respectively
     \end{itemize}
 
-\item \textbf{Fully Connected Layers:} Following the convolutional blocks, two dense layers with 640 and 128 units respectively, each followed by dropout
+\item \textbf{Fully Connected Layers:} Following the [processing] blocks, [number] dense layers with [units 1] and [units 2] units respectively, each followed by [regularization]
 
-\item \textbf{Output Layer:} A final dense layer with 2 units and softmax activation for binary classification
+\item \textbf{Output Layer:} A final dense layer with [output units] units and [activation function] for [task type]
 \end{enumerate}
 
 \subsection{Training Configuration}
 
 We adjusted the model training process by:
 \begin{enumerate}
-\item Replacing the original loss function with sparse categorical cross-entropy
-\item Modifying dropout rates to prevent overfitting
-\item Adjusting 3D MaxPooling parameters to better capture gas leak dynamics
+\item Replacing the original loss function with [loss function]
+\item Modifying [regularization] rates to prevent overfitting
+\item Adjusting [operation] parameters to better capture [target characteristics]
 \end{enumerate}
 
-The model consists of 413,386 trainable parameters (1.58 MB) and efficiently processes spatial and temporal features through its convolutional and pooling layers. We use the adapted architecture as a consistent baseline across all preprocessing configurations to enable fair comparison of our proposed optimisations.
+The model consists of [parameter count] trainable parameters ([size] MB) and efficiently processes [feature type 1] and [feature type 2] features through its [processing] layers. We use the adapted architecture as a consistent baseline across all [preprocessing] configurations to enable fair comparison of our proposed optimisations.
 
 \section{Implementation Details}
 
-All experiments were conducted on a system with Linux 5.15.167.4-microsoft-standard-WSL2, an x86\_64 CPU, 15 GB RAM, and an NVIDIA GeForce RTX 4060 Laptop GPU. The model was executed using TensorFlow and trained with the Adam optimiser.
+All experiments were conducted on a system with [OS details], [CPU details], [memory] GB RAM, and [GPU details]. The model was executed using [framework] and trained with the [optimizer].
 
-The implementation workflow focuses on preprocessing, model training, and evaluation:
+The implementation workflow focuses on [process 1], [process 2], and [process 3]:
 
 \begin{enumerate}
-\item \textbf{Preprocessing:} Video segmentation and application of background subtraction techniques (Moving Average, Running Average, and CGMM)
-\item \textbf{Training:} 3D CNN model optimization using Adam optimizer with learning rate scheduling and early stopping
-\item \textbf{Evaluation:} Performance assessment using accuracy, precision, recall, F1-score, and processing time measurements
+\item \textbf{[Process 1]:} [Data preparation] and application of [processing techniques] ([Method 1], [Method 2], and [Method 3])
+\item \textbf{[Process 2]:} [Model] optimization using [optimizer] with [training techniques]
+\item \textbf{[Process 3]:} Performance assessment using [metric 1], [metric 2], [metric 3], [metric 4], and [metric 5] measurements
 \end{enumerate}
 
-Comparative analyses are conducted to assess the impact of background subtraction methods on model performance, providing insights into their suitability for different environmental conditions and computational constraints.
+Comparative analyses are conducted to assess the impact of [processing methods] on model performance, providing insights into their suitability for different [conditions] and [constraints].

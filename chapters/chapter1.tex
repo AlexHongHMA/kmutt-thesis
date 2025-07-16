@@ -1,31 +1,29 @@
 \chapter{INTRODUCTION}
 
-Natural gas is a critical energy resource for modern civilisation, utilised in heating, power generation, and various industrial processes such as methanol, propylene, and ammonia production. It is primarily distributed via pipeline networks from production sites to residential and industrial areas, though alternative methods include compression for vehicle storage or liquefaction at ultra-low temperatures for easier handling. Despite its utility, natural gas poses significant risks due to its high methane content, flammability, and odourless, colourless nature.
+This chapter introduces the fundamental concepts and background of [your research topic]. In recent years, [your field] has gained significant attention due to its potential applications in [application area]. The rapid advancement of technology has created new opportunities for innovative solutions to address existing challenges in [problem domain].
 
-Methane, the primary constituent of natural gas, plays a crucial role in the global energy mix due to its extensive use in electricity generation, heating, and various industrial applications. As a fossil fuel, natural gas emits roughly 50\% less carbon dioxide (CO$_2$) than coal when combusted, making it a cleaner energy source. However, methane's global warming potential (GWP)—estimated to be 36 times greater than CO$_2$ over a 100-year period—poses a significant climate risk when leaked into the atmosphere.
+[Your research area] plays a crucial role in modern [industry/field] due to its [key characteristics or benefits]. Recent studies have shown that [general statement about the field] can significantly improve [performance metrics] compared to traditional approaches. However, several challenges remain in implementing these solutions effectively in real-world scenarios.
 
-Methane, with an explosive range of 5\% to 15\% in air, as documented in the CRC Handbook of Chemistry and Physics \cite{haynes2016crc}, can lead to undetected leaks and catastrophic accidents without advanced detection systems. Such hazards underscore the need for robust monitoring technologies to mitigate risks. These leaks, occurring across the natural gas supply chain from production sites to distribution systems, underscore the urgent need for innovative solutions to detect and mitigate emissions effectively.
+The complexity of [your research problem] requires sophisticated approaches that can handle [specific challenges]. Traditional methods, while effective in certain scenarios, face limitations when dealing with [problem constraints]. These limitations include [challenge 1], [challenge 2], and [challenge 3], which directly impact the overall system performance and practical applicability.
 
-Traditional approaches to Leak Detection and Repair (LDAR), such as the U.S. Environmental Protection Agency's (EPA) Method 21 and optical gas imaging (OGI) with infrared (IR) cameras, have proven effective but are often constrained by high operational costs, labor intensity, and inconsistencies due to operator dependence and environmental factors. Furthermore, these conventional methods lack real-time or automated feedback capabilities, creating inefficiencies in large-scale leak monitoring and mitigation efforts.
+Current approaches to [your problem domain] typically involve [traditional approach description]. While these methods have proven useful, they are often constrained by [limitation 1], [limitation 2], and [limitation 3]. Furthermore, these conventional methods lack [missing capability], creating inefficiencies in [application context].
 
-Infrared imaging and Optical Gas Imaging (OGI) technologies address the challenge of methane's invisibility by detecting its infrared emissions \cite{ravikumar2016optical}. Cameras like the FLIR GF320IR camera, used to capture the GasVid dataset compiled by Wang et al. \cite{wang2020machine} and introduced in their study, detect radiation absorbed by leaking gas, enabling rapid visualisation and real-time response.
+Recent advancements in [technology area] have enabled the development of [new approach type] capable of addressing these challenges \cite{sample2020reference}. One notable innovation is [sample technique], which employs [methodology] to [achieve goal] \cite{sample2022reference}. Building on this foundation, researchers have presented [advanced technique], an improved system that utilizes [advanced methodology] to [enhanced goal] \cite{sample2023reference}.
 
-Advancements in machine vision and deep learning technologies have enabled the development of automated systems capable of addressing these challenges. One notable innovation is "GasNet," introduced by Wang et al. (2020), which employs convolutional neural networks (CNNs) to detect methane leaks using IR video data \cite{wang2020machine}. Building on this foundation, Wang et al. (2022) presented "VideoGasNet," an advanced system that utilises 3D CNN architectures to detect methane leaks and classify them based on size \cite{wang2022videogasnet}.
-
-Despite these advancements, challenges remain. The computational complexity of VideoGasNet, which employs moving average background subtraction with 210 frames, requires substantial data storage and processing time, posing a challenge for deployment on resource-limited devices. To address these issues, this work proposes an optimised background subtraction method combined with a 3D-CNN for real-time infrared gas leak classification.
+Despite these advancements, challenges remain. The [specific challenge] requires [resource requirements], posing difficulties for deployment in [deployment context]. To address these issues, this work proposes [your proposed solution] combined with [complementary technique] for [target application].
 
 \section{Statement of Problem}
 
-The current state of methane leak detection systems faces several critical challenges:
+The current state of [your research area] faces several critical challenges:
 
 \begin{enumerate}
-\item \textbf{Computational Complexity:} VideoGasNet's moving average background subtraction with 210 frames requires substantial computational resources, making real-time deployment on resource-constrained devices challenging.
+\item \textbf{Challenge 1:} [Description of first major challenge and its impact on the field]
 
-\item \textbf{Processing Speed:} Traditional background subtraction methods are computationally intensive, limiting their applicability for real-time monitoring in industrial environments.
+\item \textbf{Challenge 2:} [Description of second major challenge and its implications]
 
-\item \textbf{False Positive Rates:} Existing methods struggle with environmental interference, leading to false alarms that increase operational costs and reduce system reliability.
+\item \textbf{Challenge 3:} [Description of third major challenge and its effects on implementation]
 
-\item \textbf{Resource Constraints:} Current deep learning models require significant memory and processing power, limiting deployment on edge devices for continuous monitoring.
+\item \textbf{Challenge 4:} [Description of fourth major challenge and its limitations]
 \end{enumerate}
 
 \section{Objectives}
@@ -33,15 +31,15 @@ The current state of methane leak detection systems faces several critical chall
 The primary objectives of this research are:
 
 \begin{enumerate}
-\item To develop an optimised preprocessing pipeline that reduces computational complexity while maintaining high detection accuracy.
+\item To develop [objective 1 description] that [expected outcome 1].
 
-\item To implement and evaluate running average background subtraction as an alternative to computationally intensive moving median approaches.
+\item To implement and evaluate [objective 2 description] as an alternative to [current approach].
 
-\item To investigate the impact of image resolution reduction on classification performance and computational efficiency.
+\item To investigate the impact of [variable/parameter] on [performance metric] and [efficiency measure].
 
-\item To achieve real-time methane leak classification suitable for deployment on resource-constrained devices.
+\item To achieve [target goal] suitable for [application context].
 
-\item To maintain classification accuracy above 98\% while significantly reducing processing time and computational requirements.
+\item To maintain [quality metric] above [threshold] while significantly reducing [cost metric] and [resource requirements].
 \end{enumerate}
 
 \section{Scope}
@@ -49,15 +47,15 @@ The primary objectives of this research are:
 This research focuses on the following areas:
 
 \begin{enumerate}
-\item \textbf{Dataset:} Utilisation of the GasVid dataset for training and evaluation, specifically videos captured at 4.6m and 6.9m distances for optimal signal quality.
+\item \textbf{Dataset:} Utilization of [dataset name] for training and evaluation, specifically [data characteristics] for optimal [quality criteria].
 
-\item \textbf{Background Subtraction Methods:} Implementation and comparison of three approaches: Moving Average, Running Average, and Custom Gaussian Mixture Model.
+\item \textbf{Methodology:} Implementation and comparison of [number] approaches: [Method 1], [Method 2], and [Method 3].
 
-\item \textbf{Resolution Analysis:} Evaluation of three video frame sizes: 240×320 (original), 120×160 (half), and 60×80 (quarter) to assess computational trade-offs.
+\item \textbf{Parameter Analysis:} Evaluation of [number] [parameter types]: [parameter values] to assess [trade-off considerations].
 
-\item \textbf{Classification Task:} Focus on binary classification (leak vs. no-leak) for practical industrial applications.
+\item \textbf{Task Focus:} Focus on [task type] for practical [application context].
 
-\item \textbf{Performance Metrics:} Comprehensive evaluation using accuracy, precision, recall, F1-score, and processing time measurements.
+\item \textbf{Performance Metrics:} Comprehensive evaluation using [metric 1], [metric 2], [metric 3], [metric 4], and [metric 5] measurements.
 \end{enumerate}
 
 \section{Expected Benefits}
@@ -65,13 +63,13 @@ This research focuses on the following areas:
 The anticipated benefits of this research include:
 
 \begin{enumerate}
-\item \textbf{Enhanced Computational Efficiency:} Significant reduction in processing time (up to 3× faster) while maintaining high accuracy, enabling real-time applications.
+\item \textbf{Enhanced [Performance Aspect]:} Significant improvement in [performance metric] while maintaining [quality measure], enabling [application benefit].
 
-\item \textbf{Reduced False Positives:} Achievement of zero false positives through optimised preprocessing, reducing unnecessary inspections and operational costs.
+\item \textbf{Reduced [Cost Aspect]:} Achievement of [improvement target] through [optimization method], reducing [cost factors] and [operational impacts].
 
-\item \textbf{Edge Device Deployment:} Enabling deployment on resource-constrained devices through model size reduction and optimised algorithms.
+\item \textbf{[Deployment Aspect]:} Enabling deployment in [target environment] through [optimization techniques] and [efficiency improvements].
 
-\item \textbf{Industrial Applicability:} Providing a practical solution for continuous methane leak monitoring in industrial environments.
+\item \textbf{[Practical Aspect]:} Providing a practical solution for [application context] in [target environment].
 
-\item \textbf{Environmental Impact:} Contributing to greenhouse gas reduction efforts through improved leak detection and mitigation capabilities.
+\item \textbf{[Impact Aspect]:} Contributing to [broader impact] through improved [capability] and [beneficial outcomes].
 \end{enumerate}

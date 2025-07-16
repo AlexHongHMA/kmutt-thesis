@@ -1,103 +1,103 @@
-\chapter{RELATED WORK}
+\chapter{LITERATURE REVIEW}
 
-This chapter provides a comprehensive review of the techniques and methods related to methane leak detection, focusing on vision-based approaches, background subtraction techniques, and advancements in deep learning architectures. The findings are drawn primarily from significant studies that integrate deep learning with real-world methane detection applications.
+This chapter provides a comprehensive review of the techniques and methods related to [your research area], focusing on [approach 1], [approach 2], and advancements in [technology domain]. The findings are drawn primarily from significant studies that integrate [methodology] with real-world [application domain] applications.
 
-\section{GasVid Dataset}
+\section{Sample Dataset Overview}
 
-In our experiment, we employed the GasVid dataset \cite{wang2020machine}, an open-access collection of grayscale videos (240 × 320 × 1 pixels) captured using a FLIR GF-320 infrared camera. The dataset, which has been used for developing GasNet (2D-CNN) \cite{wang2020machine} and VideoGasNet (3D-CNN) \cite{wang2022videogasnet} models, consists of 31 videos recorded at five different distances.
+In our experiment, we employed the [Dataset Name] \cite{sample2020reference}, an open-access collection of [data type] ([dimensions]) captured using [equipment/method]. The dataset, which has been used for developing [Model 1] \cite{sample2020reference} and [Model 2] \cite{sample2022reference} models, consists of [number] samples recorded under [number] different conditions.
 
-The GasVid dataset serves as the primary dataset for methane leak detection, introduced by Wang et al. (2022). This dataset contains 31 controlled-release methane leak videos, collected during experiments at METEC in July 2017. GasVid comprises approximately 669,600 frames, recorded with a FLIR GF-320 infrared camera. Each video is 24 minutes long, captured at five different distances ranging from 4.6 m to 15.6 m, and includes eight leak size classes, varying from 0.3 to 124.4 standard cubic feet per hour (scfh).
+The [Dataset Name] serves as the primary dataset for [research area], introduced by [Authors] et al. (20XX). This dataset contains [number] [sample type], collected during experiments at [location] in [time period]. [Dataset Name] comprises approximately [number] samples, recorded with [equipment]. Each sample is [duration/size], captured under [number] different conditions ranging from [condition 1] to [condition 2], and includes [number] classes, varying from [class 1] to [class N].
 
-Following the recommendation of Wang et al. \cite{wang2022videogasnet}, we selected 10 videos from imaging distances of 4.6m and 6.9m, as leak signals weaken at greater distances. The dataset was collected in a controlled environment with predetermined leak locations. While Gas-DB \cite{wang2024invisible} provides more realistic scenarios with real-world obstacles in RGB-thermal images, GasVid's setting is ideal for examining real-time detection performance.
+Following the recommendation of [Authors] et al. \cite{sample2022reference}, we selected [number] samples from [specific criteria], as [reason for selection]. The dataset was collected in a [environment type] with [characteristics]. While [Alternative Dataset] \cite{sample2024reference} provides more [characteristics] with [additional features], [Dataset Name]'s setting is ideal for examining [target application].
 
-Despite its size, the dataset has certain limitations, such as the use of a fixed tripod to avoid camera movement, the absence of environmental interferences like people or vehicles, and the inability to control wind conditions. However, the GasVid dataset, despite being acquired under controlled conditions, presents intrinsic challenges for accurate classification. These challenges stem from the subtle nature of early-stage methane plumes, variations in dispersion patterns caused by minor air currents—even within a regulated environment—and the visual similarity between some plume movements and background elements such as clouds.
+Despite its size, the dataset has certain limitations, such as [limitation 1], [limitation 2], and [limitation 3]. However, the [Dataset Name], despite being acquired under [conditions], presents intrinsic challenges for accurate [task]. These challenges stem from [challenge 1], [challenge 2], and [challenge 3].
 
-\section{Vision-Based Methane Leak Detection}
+\section{[Technology/Method]-Based [Application] Detection}
 
-Methane, a potent greenhouse gas, is primarily emitted from oil and gas infrastructure. Due to its high global warming potential (GWP), early and accurate detection of methane leaks is critical for mitigating climate change impacts. Vision-based methane leak detection, particularly using infrared (IR) cameras, has emerged as a reliable and scalable solution.
+[Research subject] is [description] and is primarily [application context]. Due to its [key characteristics], early and accurate [detection/classification] of [research subject] is critical for [application benefits]. [Technology]-based [application] detection, particularly using [specific technology], has emerged as a reliable and scalable solution.
 
-Optical Gas Imaging (OGI) systems, such as FLIR GF-320 cameras, are commonly used for detecting methane plumes. These systems capture thermal radiation differences between methane and its surroundings, enabling the visualization of leaks. However, traditional OGI methods are limited by manual operation, operator dependency, and high labor costs.
+[Technology] systems, such as [specific equipment], are commonly used for [detecting/processing] [research subject]. These systems capture [data type] between [subject] and [environment], enabling the [processing goal]. However, traditional [technology] methods are limited by [limitation 1], [limitation 2], and [limitation 3].
 
-To overcome these limitations, automated systems leveraging computer vision and deep learning have been developed. Such systems can significantly improve detection accuracy and reduce operational costs while providing consistent results across different conditions. Wang et al. introduced the GasVid dataset and deep learning models such as GasNet and VideoGasNet, which successfully automated the detection and classification of methane leaks.
+To overcome these limitations, automated systems leveraging [technology 1] and [technology 2] have been developed. Such systems can significantly improve [performance metric] and reduce [cost metric] while providing consistent results across different conditions. [Authors] et al. introduced the [Dataset Name] and [technology] models such as [Model 1] and [Model 2], which successfully automated the [task] of [research subject].
 
-\section{Two-Class Classification Problem}
+\section{Classification Problem Framework}
 
-GasVid videos begin with a 3-minute "no-leak" segment (Class 0), followed by seven "leak" classes (Classes 1-7) of progressively increasing leak rates. For binary classification approaches, classes 1-7 are typically merged into a single "leak" class. This leads to a class imbalance with approximately 2,298 "no-leak" samples and 15,984 "leak" samples for training, resulting in a ratio of 1:6.95.
+[Dataset Name] samples begin with [initial condition] (Class 0), followed by [number] [condition classes] (Classes 1-N) of progressively [changing characteristic]. For binary classification approaches, classes 1-N are typically merged into a single [positive class]. This leads to a class imbalance with approximately [number] [negative class] samples and [number] [positive class] samples for training, resulting in a ratio of [ratio].
 
-To address this imbalance, data augmentation is commonly applied exclusively to the training dataset, increasing "no-leak" samples to match leak samples and achieving a balanced 1:1 ratio. Custom augmentation methods introduce diversity given the dataset's limited variability (e.g., only moving clouds and a windsock as disturbances). The augmentation techniques typically include random horizontal flipping and random rotation to simulate perspective variations while preserving the dynamic characteristics of methane plumes.
+To address this imbalance, data augmentation is commonly applied exclusively to the training dataset, increasing [negative class] samples to match [positive class] samples and achieving a balanced 1:1 ratio. Custom augmentation methods introduce diversity given the dataset's limited variability (e.g., only [variation sources] as disturbances). The augmentation techniques typically include [technique 1] and [technique 2] to simulate [variation type] while preserving the [important characteristics].
 
-\section{Background Subtraction Techniques}
+\section{[Primary Method] Techniques}
 
-Background subtraction is a crucial preprocessing step in vision-based methane leak detection, as it isolates the methane plume from the background, enhancing its visibility. Several methods have been developed and evaluated for this purpose:
+[Primary method] is a crucial preprocessing step in [technology]-based [application], as it [purpose], enhancing [quality measure]. Several methods have been developed and evaluated for this purpose:
 
-\subsection{Moving Average Background Subtraction}
+\subsection{[Method 1] Approach}
 
-Wang et al. applied the Moving Average method with a 210-frame window to create a stable background for isolating methane plumes. This technique calculates the median or average of previous frames, making it particularly effective in static environments where the background remains consistent. However, the computational demands of maintaining a large window size make it challenging for resource-constrained systems.
+[Authors] et al. applied the [Method 1] with a [parameter]-[unit] window to create [desired outcome] for [purpose]. This technique calculates the [mathematical operation] of previous [data units], making it particularly effective in [environment type] where the [conditions] remain consistent. However, the computational demands of maintaining a large window size make it challenging for [constraint type] systems.
 
-The Moving Average method works well for ideal environments with little to no obstacles, but struggles to adapt to dynamic or real-world scenarios where changes in lighting, wind, vehicles, humans, animals or camera motion can occur.
+The [Method 1] works well for [ideal conditions] with little to no [interference], but struggles to adapt to [challenging conditions] where changes in [variable 1], [variable 2], [variable 3] or [variable 4] can occur.
 
-\subsection{Running Average Background Subtraction}
+\subsection{[Method 2] Approach}
 
-The Running Average method represents a significant advancement over the Moving Average approach. Instead of maintaining a window of previous frames, it dynamically updates the background model using an exponential weighting system:
+The [Method 2] represents a significant advancement over the [Method 1] approach. Instead of maintaining a window of previous [data units], it dynamically updates the [model] using an exponential weighting system:
 
 \begin{equation}
-B_t = (1 - \alpha) \times B_{t-1} + \alpha \times I_t
+M_t = (1 - \alpha) \times M_{t-1} + \alpha \times D_t
 \end{equation}
 
-where $B_t$ is the background model at time t, $I_t$ is the current frame, and $\alpha$ is the learning rate. This method offers several advantages:
+where $M_t$ is the [model] at time t, $D_t$ is the current [data unit], and $\alpha$ is the learning rate. This method offers several advantages:
 
 \begin{enumerate}
-\item Reduced computational complexity, as it requires only the current frame and the previous background model
-\item Adaptive response to gradual changes in the environment  
-\item Minimal memory requirements, making it suitable for resource-constrained systems
+\item Reduced computational complexity, as it requires only the current [data unit] and the previous [model]
+\item Adaptive response to gradual changes in the [environment]  
+\item Minimal memory requirements, making it suitable for [constraint type] systems
 \end{enumerate}
 
-\subsection{Gaussian Mixture Model Approaches}
+\subsection{[Method 3] Approaches}
 
-Gaussian Mixture Models have been successfully applied to background subtraction in various computer vision applications. Standard MOG2 (Mixture of Gaussian v2) algorithms model each pixel's temporal evolution as a mixture of Gaussian distributions, each characterized by mean, variance, and weight parameters.
+[Method 3] have been successfully applied to [primary method] in various [application] applications. Standard [Algorithm] algorithms model each [data element]'s temporal evolution as a [statistical model], each characterized by [parameter 1], [parameter 2], and [parameter 3] parameters.
 
-Custom implementations of Gaussian Mixture Models can be tailored specifically for gas detection challenges, incorporating modifications such as simplified matching criteria and adaptive component management to improve performance in methane detection scenarios.
+Custom implementations of [Method 3] can be tailored specifically for [application] challenges, incorporating modifications such as [modification 1] and [modification 2] to improve performance in [application] scenarios.
 
-\section{Deep Learning Approaches for Methane Leak Detection}
+\section{[Technology] Approaches for [Application]}
 
-Advancements in deep learning have revolutionized methane leak detection by enabling automated and highly accurate classification of methane plumes. Wang et al. introduced two key models for this purpose:
+Advancements in [technology] have revolutionized [application] by enabling automated and highly accurate [task] of [research subject]. [Authors] et al. introduced two key models for this purpose:
 
-\subsection{GasNet: Binary Classification}
+\subsection{[Model 1]: Binary Classification}
 
-GasNet is a convolutional neural network (CNN) designed for binary classification of methane leaks. The model processes background-subtracted frames to distinguish between leak and no-leak scenarios. GasNet demonstrated impressive performance, achieving high probabilities of detection (PoD), particularly for larger methane leaks.
+[Model 1] is a [architecture type] designed for binary classification of [research subject]. The model processes [preprocessed data] to distinguish between [class 1] and [class 2] scenarios. [Model 1] demonstrated impressive performance, achieving high [performance metrics], particularly for [specific conditions].
 
-\subsection{VideoGasNet: 3D CNN Architecture}
+\subsection{[Model 2]: [Advanced Architecture]}
 
-VideoGasNet utilizes 3D CNN architectures to detect methane leaks and classify them based on size. This dual capability is critical for prioritizing the repair of larger leaks, which contribute disproportionately to total emissions, thereby enhancing the efficiency and cost-effectiveness of mitigation strategies.
+[Model 2] utilizes [advanced architecture] to [detect/classify] [research subject] and classify them based on [classification criteria]. This dual capability is critical for [application benefit], which contribute [impact description] to [overall goal], thereby enhancing the efficiency and cost-effectiveness of [application strategies].
 
-The 3D CNN architecture employed in VideoGasNet is specifically designed to extract and analyze spatiotemporal features from methane leak videos. It begins with four convolutional layers, which apply three-dimensional filters to capture both spatial and temporal patterns. ReLU activation functions are used to introduce non-linearity, enabling the network to learn complex feature representations.
+The [advanced architecture] employed in [Model 2] is specifically designed to extract and analyze [feature type] from [data type]. It begins with [number] [layer type], which apply [dimensional] filters to capture both [feature 1] and [feature 2] patterns. [Activation function] activation functions are used to introduce non-linearity, enabling the network to learn complex feature representations.
 
 \section{Computational Challenges and Optimization}
 
-Despite the success of deep learning approaches, several computational challenges remain:
+Despite the success of [technology] approaches, several computational challenges remain:
 
 \begin{enumerate}
-\item \textbf{Memory Requirements:} Traditional methods like VideoGasNet's 210-frame moving average require substantial memory for frame storage and processing.
+\item \textbf{Memory Requirements:} Traditional methods like [Model]'s [parameter]-[unit] [method] require substantial memory for [resource] storage and processing.
 
-\item \textbf{Processing Speed:} Complex background subtraction algorithms can become bottlenecks in real-time applications.
+\item \textbf{Processing Speed:} Complex [algorithm type] can become bottlenecks in real-time applications.
 
-\item \textbf{Resource Constraints:} Deployment on edge devices requires careful balance between accuracy and computational efficiency.
+\item \textbf{Resource Constraints:} Deployment on [target devices] requires careful balance between [performance metric] and computational efficiency.
 
-\item \textbf{Real-time Performance:} Industrial applications demand rapid processing capabilities for immediate leak response.
+\item \textbf{Real-time Performance:} [Application domain] applications demand rapid processing capabilities for immediate [response type].
 \end{enumerate}
 
-\section{A Path Toward Advancing Methane Detection}
+\section{A Path Toward Advancing [Research Area]}
 
-Recent research has focused on addressing computational limitations while maintaining detection accuracy. Key areas of development include:
+Recent research has focused on addressing computational limitations while maintaining [performance metric]. Key areas of development include:
 
 \begin{enumerate}
-\item \textbf{Efficient Preprocessing:} Development of lightweight background subtraction methods that maintain accuracy while reducing computational requirements.
+\item \textbf{Efficient Preprocessing:} Development of lightweight [method] that maintain [quality] while reducing computational requirements.
 
-\item \textbf{Model Optimization:} Implementation of quantization techniques and model compression to enable edge deployment.
+\item \textbf{Model Optimization:} Implementation of [technique 1] and [technique 2] to enable [deployment target].
 
-\item \textbf{Resolution Analysis:} Investigation of the impact of reduced image resolution on detection performance and computational efficiency.
+\item \textbf{Parameter Analysis:} Investigation of the impact of [variable] on [performance metric] and computational efficiency.
 
-\item \textbf{Real-time Processing:} Focus on achieving frame rates suitable for industrial monitoring applications.
+\item \textbf{Real-time Processing:} Focus on achieving [performance target] suitable for [application domain] applications.
 \end{enumerate}
 
-This work builds upon these foundations by proposing optimized preprocessing techniques and evaluating their impact on both accuracy and computational efficiency, contributing to the development of practical, deployable methane detection systems.
+This work builds upon these foundations by proposing optimized [methodology] and evaluating their impact on both [metric 1] and [metric 2], contributing to the development of practical, deployable [application] systems.
