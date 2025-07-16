@@ -1,0 +1,177 @@
+\chapter{CONCLUSION AND FUTURE WORK}
+
+This chapter summarizes the key findings of the research, discusses the contributions made to the field of automated methane leak detection, and outlines potential directions for future work.
+
+\section{Research Summary}
+
+This research presents an efficient real-time infrared natural gas leak classification method that significantly improves computational efficiency while maintaining high detection accuracy. The study addressed the critical challenge of detecting methane leaks using infrared cameras while maintaining computational efficiency suitable for real-time applications in industrial environments.
+
+The primary focus was on optimizing the preprocessing pipeline of VideoGasNet by implementing three different background subtraction methods: Moving Average, Running Average, and Custom Gaussian Mixture Model (CGMM). Additionally, the impact of image resolution reduction on both classification performance and computational efficiency was systematically evaluated.
+
+\section{Key Findings and Contributions}
+
+\subsection{Enhanced Background Subtraction Performance}
+
+The Running Average background subtraction method demonstrated superior performance across all evaluation metrics:
+
+\begin{enumerate}
+\item \textbf{Highest Classification Accuracy:} Achieved 99.71\% classification accuracy, outperforming both Moving Average (99.58\%) and Custom GMM (99.65\%) methods.
+
+\item \textbf{Perfect Leak Detection Precision:} Achieved 100\% precision for leak detection with zero false positives, a critical advancement for practical industrial applications where false alarms can lead to unnecessary inspections and operational costs.
+
+\item \textbf{Superior Processing Speed:} Reduced processing time to 35.88 ms per frame approximately 3× faster than conventional Moving Average approaches (107.39 ms) and 13\% faster than Custom GMM (41.26 ms).
+
+\item \textbf{Excellent Pairwise Performance:} Demonstrated perfect 100\% accuracy for medium to large leak classifications (0-2 through 0-6 pairs) and 98.9\% accuracy for the most challenging small leak scenario (0-1 pair).
+\end{enumerate}
+
+\subsection{Computational Efficiency Optimization}
+
+The study successfully demonstrated that significant computational improvements can be achieved without compromising detection accuracy:
+
+\begin{enumerate}
+\item \textbf{Memory Efficiency:} The Running Average method requires only the current frame and previous background model, eliminating the need to store and process 210 frames as in the original VideoGasNet approach.
+
+\item \textbf{Real-time Processing Capability:} The 3× improvement in processing speed enables deployment in real-time monitoring applications where rapid response to leaks is critical.
+
+\item \textbf{Algorithmic Simplicity:} The exponential weighting approach of the Running Average method provides computational simplicity while maintaining adaptive response to environmental changes.
+\end{enumerate}
+
+\subsection{Image Resolution Impact Analysis}
+
+The systematic evaluation of different image resolutions provided valuable insights for practical deployment:
+
+\begin{enumerate}
+\item \textbf{Optimal Resolution Trade-off:} Half-resolution (120×160) images maintain robust accuracy (99.27\%) while decreasing model size by 40\%, offering a compelling balance between performance and efficiency.
+
+\item \textbf{Leak Size Dependency:} Resolution reduction primarily impacts detection of small leaks, with accuracy dropping from 98.9\% at full resolution to 97.1\% at half resolution for the challenging 0-1 pair classification.
+
+\item \textbf{Robust Large Leak Detection:} Detection of medium to large leaks remains remarkably stable across all resolutions, with accuracy consistently above 99.5\% even at quarter resolution (60×80).
+
+\item \textbf{Model Size Reduction:} Quarter-resolution models require 55\% fewer parameters compared to full-resolution models, enabling deployment on resource-constrained edge devices.
+\end{enumerate}
+
+\section{Practical Implications}
+
+The research contributions have significant implications for industrial methane leak monitoring:
+
+\subsection{Industrial Deployment Benefits}
+
+\begin{enumerate}
+\item \textbf{Cost-effective Monitoring:} Zero false positives eliminate unnecessary inspection costs and improve operational efficiency.
+
+\item \textbf{Continuous Surveillance:} The computational efficiency enables continuous 24/7 monitoring across multiple industrial sites.
+
+\item \textbf{Edge Device Implementation:} Model optimization allows deployment on resource-constrained devices, reducing infrastructure requirements.
+
+\item \textbf{Scalable Solutions:} The optimized approach can be implemented across multiple monitoring points in industrial facilities without excessive computational overhead.
+\end{enumerate}
+
+\subsection{Environmental and Safety Impact}
+
+\begin{enumerate}
+\item \textbf{Greenhouse Gas Reduction:} Improved leak detection capabilities contribute to reducing methane emissions and their environmental impact.
+
+\item \textbf{Safety Enhancement:} Real-time detection capabilities improve safety by enabling rapid response to potentially hazardous leak situations.
+
+\item \textbf{Regulatory Compliance:} Automated monitoring systems help industries maintain compliance with environmental regulations and emission standards.
+\end{enumerate}
+
+\section{Research Limitations}
+
+While the study achieved significant improvements, several limitations should be acknowledged:
+
+\subsection{Dataset Constraints}
+
+\begin{enumerate}
+\item \textbf{Controlled Environment:} The GasVid dataset was collected under controlled conditions with fixed camera positions and limited environmental variables.
+
+\item \textbf{Limited Environmental Diversity:} The dataset lacks variations in weather conditions, complex industrial backgrounds, and dynamic environmental factors.
+
+\item \textbf{Specific Camera System:} Results are based on FLIR GF-320 infrared camera data, which may not generalize to other infrared imaging systems.
+\end{enumerate}
+
+\subsection{Technical Limitations}
+
+\begin{enumerate}
+\item \textbf{Small Leak Detection:} Performance degradation is observed for smallest leak sizes, particularly at reduced resolutions.
+
+\item \textbf{Binary Classification Focus:} The study focused on binary classification rather than multi-class leak size classification.
+
+\item \textbf{Laboratory Conditions:} Real-world deployment may encounter additional challenges not present in the controlled experimental environment.
+\end{enumerate}
+
+\section{Future Work}
+
+Building upon the findings of this study, several promising directions for future research and development have been identified:
+
+\subsection{Real-time Deployment and Field Testing}
+
+\begin{enumerate}
+\item \textbf{Edge Device Implementation:} Implementing the optimized models on embedded systems such as NVIDIA Jetson or Raspberry Pi devices to enable standalone, field-deployable detection systems.
+
+\item \textbf{Continuous Monitoring Integration:} Developing interfaces for direct connection to infrared cameras for continuous, automated monitoring of industrial facilities.
+
+\item \textbf{Field Validation Studies:} Conducting comprehensive field testing in real-world industrial environments to validate performance under varied operational conditions including different weather patterns, complex backgrounds, and dynamic environmental factors.
+
+\item \textbf{Multi-camera Systems:} Investigating the integration of multiple camera systems for comprehensive area coverage and redundancy in critical monitoring applications.
+\end{enumerate}
+
+\subsection{Technical Enhancements}
+
+\begin{enumerate}
+\item \textbf{Multi-class Classification Enhancement:} Extending the current binary classification to improve three-class (small/medium/large) or eight-class classification performance, enabling more precise leak characterization and prioritization.
+
+\item \textbf{Adaptive Resolution Processing:} Implementing dynamic resolution adjustment based on detection confidence, using higher resolution processing only when necessary to optimize computational resources.
+
+\item \textbf{Model Quantization:} Exploring quantization-aware training and post-training quantization techniques to further reduce computational requirements without significantly impacting accuracy.
+
+\item \textbf{Compound Scaling Exploration:} Applying EfficientNet-style compound scaling principles to simultaneously optimize network width, depth, and resolution for maximum efficiency.
+
+\item \textbf{Hybrid Background Subtraction:} Developing adaptive methods that combine the strengths of different background subtraction techniques based on real-time scene characteristics.
+\end{enumerate}
+
+\subsection{Advanced Algorithm Development}
+
+\begin{enumerate}
+\item \textbf{Temporal Consistency Modeling:} Incorporating temporal consistency constraints to improve detection stability and reduce flickering in video sequences.
+
+\item \textbf{Attention Mechanisms:} Integrating spatial and temporal attention mechanisms to focus on regions most likely to contain leaks.
+
+\item \textbf{Transfer Learning Approaches:} Investigating transfer learning from other domains to improve small leak detection performance.
+
+\item \textbf{Ensemble Methods:} Developing ensemble approaches that combine multiple models or background subtraction methods for enhanced robustness.
+\end{enumerate}
+
+\subsection{Broader Applications}
+
+\begin{enumerate}
+\item \textbf{Multi-gas Detection:} Adapting the framework to detect other industrial gases such as volatile organic compounds (VOCs), ammonia, or sulfur compounds.
+
+\item \textbf{Preventive Maintenance Integration:} Integrating the leak detection system with equipment maintenance schedules to prioritize inspections and repairs based on real-time detection results.
+
+\item \textbf{Emission Compliance Monitoring:} Developing regulatory compliance tools that leverage automated detection to ensure adherence to emission standards and regulations.
+
+\item \textbf{Environmental Monitoring Networks:} Expanding the application to environmental monitoring networks for tracking emission trends across geographical regions.
+\end{enumerate}
+
+\subsection{System Integration and IoT Development}
+
+\begin{enumerate}
+\item \textbf{Cloud Integration:} Developing cloud-based systems for centralized monitoring and data analysis across multiple industrial sites.
+
+\item \textbf{IoT Connectivity:} Implementing IoT protocols for seamless integration with existing industrial monitoring infrastructure.
+
+\item \textbf{Mobile Applications:} Creating mobile applications for field personnel to receive real-time alerts and monitoring data.
+
+\item \textbf{Dashboard Development:} Building comprehensive dashboards for facility managers to monitor leak detection systems and analyze emission trends.
+\end{enumerate}
+
+\section{Final Remarks}
+
+This research successfully demonstrated that significant computational efficiency improvements can be achieved in methane leak detection systems without compromising detection accuracy. The Running Average background subtraction method, combined with strategic image resolution reduction, provides a practical solution for real-time industrial monitoring applications.
+
+The findings contribute to the broader goal of developing automated environmental monitoring systems that can help industries reduce their greenhouse gas emissions while maintaining operational efficiency. The optimizations presented in this work make advanced leak detection technology more accessible and practical for widespread industrial deployment.
+
+The balance between accuracy and computational efficiency achieved in this study represents an important step toward making sophisticated AI-based monitoring systems viable for resource-constrained environments. As industries continue to face increasing pressure to monitor and reduce their environmental impact, solutions like those presented in this research will play a crucial role in achieving sustainability goals while maintaining economic viability.
+
+Future work should focus on real-world validation and the development of comprehensive monitoring systems that can operate reliably in diverse industrial environments. The continued advancement of these technologies will be essential for addressing the global challenge of reducing greenhouse gas emissions and mitigating climate change impacts.
