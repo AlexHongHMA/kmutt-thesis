@@ -97,44 +97,18 @@ Our C[Algorithm] implementation differs from standard [standard algorithm] in [n
 The C[Algorithm] operates through the following steps:
 
 \begin{algorithm}[!ht]
-\caption{Custom [Algorithm] Model [Processing]}
+\caption{Simplified [Algorithm] Model [Processing]}
 \label{alg:custom_algorithm}
 \begin{algorithmic}[1]
-\REQUIRE Current [data unit] $D_t$, learning rate $\alpha=[value]$, components $K=[number]$
+\REQUIRE Current [data unit] $D_t$, learning rate $\alpha=[value]$
 \ENSURE [Output] $O_t$
 \IF{first [data unit]}
-    \STATE Initialize [components] for each [element]
-    \STATE $\mu_{k=0} \leftarrow D_t$, $w_{k=0} \leftarrow 1.0$ for first component
-    \STATE $\sigma^2_k \leftarrow [value]$ for all components
+    \STATE Initialize [model] $\mu \leftarrow D_t$
     \STATE $O_t \leftarrow$ zero matrix
 \ELSE
-    \STATE $d_k \leftarrow |D_t - \mu_k|$ \COMMENT{[Element]-wise distances}
-    \STATE $M_k \leftarrow (d_k < [threshold] \cdot \sigma_k)$ \COMMENT{Match criteria}
-    \STATE $M_{any} \leftarrow$ true if any component matches
-    
-    \STATE $w_k \leftarrow (1-\alpha) \cdot w_k$ for all $k$ \COMMENT{Decay all weights}
-    
-    \FOR{each [element] with a match}
-        \STATE $k_{best} \leftarrow$ component with highest weight among matches
-        \STATE $w_{k_{best}} \leftarrow w_{k_{best}} + \alpha$
-        \STATE $\delta \leftarrow D_t - \mu_{k_{best}}$ 
-        \STATE $\mu_{k_{best}} \leftarrow \mu_{k_{best}} + \alpha \cdot \delta$
-        \STATE $\sigma^2_{k_{best}} \leftarrow (1-\alpha) \cdot \sigma^2_{k_{best}} + \alpha \cdot \delta^2$
-        \STATE $\sigma^2_{k_{best}} \leftarrow \max(\sigma^2_{k_{best}}, [min_value])$ \COMMENT{Minimum variance  $\sigma^2_{k_{min}}$}
-    \ENDFOR
-    
-    \FOR{each [element] without a match}
-        \STATE $k_{min} \leftarrow$ component with minimum weight
-        \STATE $\mu_{k_{min}} \leftarrow D_t$
-        \STATE $\sigma^2_{k_{min}} \leftarrow [value]$ \COMMENT{Initial variance}
-        \STATE $w_{k_{min}} \leftarrow \alpha$
-    \ENDFOR
-    
-    \STATE Normalize weights: $w_k \leftarrow w_k/\sum_j w_j$ for all $k$
-    
-    \STATE $k_{max} \leftarrow$ component with maximum weight at each [element]
-    \STATE $BG_t \leftarrow \mu_{k_{max}}$ \COMMENT{[Model] model}
-    \STATE $O_t \leftarrow |D_t - BG_t|$ \COMMENT{Generate [output]}
+    \STATE Calculate difference: $\delta \leftarrow D_t - \mu$
+    \STATE Update [model]: $\mu \leftarrow \mu + \alpha \cdot \delta$
+    \STATE Generate [output]: $O_t \leftarrow |D_t - \mu|$
 \ENDIF
 \RETURN $O_t$
 \end{algorithmic}
