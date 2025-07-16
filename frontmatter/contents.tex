@@ -1,0 +1,36 @@
+\newpage
+\thispagestyle{empty}
+
+\begin{center}
+\fontsize{12}{18}\bfseries\selectfont
+CONTENTS
+\end{center}
+
+\vspace{6pt}
+
+\hfill\fontsize{12}{18}\selectfont PAGE
+
+\vspace{6pt}
+
+% Front matter entries
+\fontsize{12}{18}\selectfont
+\noindent ABSTRACT \dotfill ii\\
+\noindent ACKNOWLEDGEMENTS \dotfill iii\\
+\noindent CONTENTS \dotfill v\\
+\noindent LIST OF TABLES \dotfill vii\\
+\noindent LIST OF FIGURES \dotfill ix\\
+\noindent LIST OF SYMBOLS \dotfill xi\\
+\noindent LIST OF TECHNICAL VOCABULARY AND ABBREVIATIONS \dotfill xii\\
+
+\vspace{6pt}
+
+\noindent\fontsize{12}{18}\bfseries\selectfont CHAPTER
+
+\vspace{6pt}
+
+% Dynamic table of contents - NO global page style change
+{\fontsize{12}{18}\selectfont
+\makeatletter
+\afterpage{\thispagestyle{contentscont}}
+\@starttoc{toc}
+\makeatother}
