@@ -1,0 +1,66 @@
+\documentclass[12pt,a4paper,oneside]{report}
+
+% Import setup files
+\input{setup/packages}
+\input{setup/formatting}
+\input{setup/metadata}
+
+\begin{document}
+
+% Ensure normal font weight for body text
+\normalfont
+
+% Front matter with Roman numerals
+\pagenumbering{roman}
+
+% Title page (no page number)
+\input{frontmatter/titlepage}
+
+% Abstract (page ii)
+\setcounter{page}{2}
+\input{frontmatter/abstract}
+
+% Acknowledgements (page iii)  
+\input{frontmatter/acknowledgement}
+
+% Contents (page v - leaving iv blank as per template)
+\setcounter{page}{5}
+\input{frontmatter/contents}
+
+% List of Tables (page vii - leaving vi blank)
+\setcounter{page}{7}
+\input{frontmatter/listtables}
+
+% List of Figures (page ix - leaving viii blank)
+\setcounter{page}{9}
+\input{frontmatter/listfigures}
+
+% List of Symbols (page xi - leaving x blank)
+\setcounter{page}{11}
+\input{frontmatter/listsymbols}
+
+% List of Technical Vocabulary and Abbreviations (page xii)
+\input{frontmatter/listabbrev}
+
+% Main content with Arabic numerals
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% Ensure normal font weight for body content
+\normalfont\fontsize{12}{18}\selectfont
+
+% Chapters
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\input{chapters/chapter3}
+\input{chapters/chapter4}
+\input{chapters/chapter5}
+
+% Bibliography
+\renewcommand{\bibname}{REFERENCES}
+\addcontentsline{toc}{chapter}{REFERENCES}
+\bibliography{references}
+\bibliographystyle{ieeetr}
+
+\end{document}
