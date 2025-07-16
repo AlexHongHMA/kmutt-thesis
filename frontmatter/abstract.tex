@@ -1,0 +1,35 @@
+\newpage
+\thispagestyle{plain}
+\setcounter{page}{2}
+
+\begin{center}
+\begin{tabular}{ll}
+Thesis Title & \parbox{10cm}{\thesistitle} \\
+Thesis Credits & \thesiscredits \\
+Candidate & \authorname \\
+Thesis Advisor & \advisor \\
+Program & \program \\
+Field of Study & \fieldofstudy \\
+Department & \department \\
+Faculty & Engineering \\
+Academic Year & \academicyear \\
+\end{tabular}
+\end{center}
+
+\vspace{0.1cm}
+
+% \section*{Abstract}
+% \addcontentsline{toc}{chapter}{ABSTRACT}
+
+\begin{center}
+Abstract
+\end{center}
+
+\vspace{0.1cm}
+
+Infrared imaging is vital for real-time methane leak detection in industrial environments, yet the computational complexity of 3D Convolutional Neural Networks (3D-CNNs) like VideoGasNet limits their deployment on resource-constrained systems. This paper proposes an optimised preprocessing pipeline for VideoGasNet, replacing the computationally intensive moving median background subtraction with a running average approach and incorporating image downscaling. Experiments on the GasVid dataset demonstrate that our method reduces preprocessing time significantly—by up to 66\% at reduced resolutions—while maintaining high classification accuracy (above 98\% even at quarter resolution). These enhancements enable real-time gas leak classification, offering a practical balance between accuracy and computational cost for industrial applications.
+
+\noindent
+\begin{tabular}{@{}p{2cm}p{12cm}@{}}
+\textbf{Keywords:} & Infrared Imaging, Methane Emissions Detection, Running Average Background Subtraction, Deep Learning Optimisation, Computational Efficiency
+\end{tabular}
