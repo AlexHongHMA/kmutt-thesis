@@ -1,0 +1,13 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Class Distribution Across Dataset Splits Before Augmentation}}{10}{table.caption.1}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Classification Performance (\%) of Different [Method Types]}}{15}{table.caption.2}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Confusion Matrix Analysis of [Method Types]}}{16}{table.caption.3}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Pairwise Accuracy Comparison (\%) Across Different [Method Types]}}{16}{table.caption.4}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Computational Efficiency Comparison of [Method Types]}}{17}{table.caption.5}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Model Size Comparison Across Different [Parameter] Values}}{18}{table.caption.6}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Classification Performance (\%) Across Different [Parameter] Values}}{18}{table.caption.7}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Pairwise Accuracy Comparison (\%) Across Different [Parameter] Values}}{19}{table.caption.8}%
+\addvspace {10\p@ }
