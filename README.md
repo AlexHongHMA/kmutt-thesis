@@ -1,4 +1,4 @@
-# KMUTT Thesis Template
+# KMUTT-THESIS-LATEX-FORMAT
 
 A LaTeX thesis template for King Mongkut's University of Technology Thonburi (KMUTT) students. This template provides a complete structure and formatting that follows KMUTT thesis guidelines, ready to be customized with your own research content.
 
