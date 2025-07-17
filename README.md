@@ -13,6 +13,138 @@ This is a **sample template** created to help KMUTT students write their theses.
 - **BibTeX**: For bibliography processing
 - **Images**: PNG/JPG images should be placed in the `images/` directory
 
+## 🛠️ Installation Guide
+
+### For Windows Users (Recommended Setup)
+
+This guide shows how to set up a complete LaTeX environment on Windows using WSL (Windows Subsystem for Linux), which provides better compatibility and performance for LaTeX compilation.
+
+#### Step 1: Install Windows Subsystem for Linux (WSL)
+
+1. **Enable WSL feature:**
+   - Open PowerShell as Administrator
+   - Run the following command:
+   ```powershell
+   wsl --install
+   ```
+   - This installs WSL2 with Ubuntu as the default distribution
+   - Restart your computer when prompted
+
+2. **Set up Ubuntu:**
+   - After restart, Ubuntu will automatically open and complete installation
+   - Create a username and password when prompted
+   - Update the system:
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   ```
+
+#### Step 2: Install TeX Live in WSL
+
+1. **Install TeX Live (Full installation recommended):**
+   ```bash
+   sudo apt install texlive-full -y
+   ```
+   - This installs the complete TeX Live distribution (~4GB)
+   - For a smaller installation, use `texlive-latex-extra` instead
+
+2. **Verify installation:**
+   ```bash
+   pdflatex --version
+   bibtex --version
+   ```
+
+#### Step 3: Install VS Code and LaTeX Workshop Extension
+
+1. **Install VS Code on Windows:**
+   - Download from [https://code.visualstudio.com/](https://code.visualstudio.com/)
+   - Install with default settings
+
+2. **Install WSL extension:**
+   - Open VS Code
+   - Go to Extensions (Ctrl+Shift+X)
+   - Search for "WSL" and install the official Microsoft WSL extension
+
+3. **Install LaTeX Workshop extension:**
+   - In VS Code Extensions, search for "LaTeX Workshop"
+   - Install the LaTeX Workshop extension by James Yu
+
+4. **Connect to WSL:**
+   - Open VS Code
+   - Press `Ctrl+Shift+P` and type "WSL: Connect to WSL"
+   - VS Code will now run in WSL environment
+
+#### Step 4: Clone and Open the Project
+
+1. **Navigate to your home directory in WSL:**
+   ```bash
+   cd ~
+   ```
+
+2. **Clone or download this thesis template:**
+   ```bash
+   git clone [your-repository-url] kmutt_thesis
+   cd kmutt_thesis
+   ```
+
+3. **Open in VS Code:**
+   ```bash
+   code .
+   ```
+
+### For Linux Users
+
+#### Install TeX Live
+```bash
+# Ubuntu/Debian
+sudo apt install texlive-full -y
+
+# Fedora
+sudo dnf install texlive-scheme-full -y
+
+# Arch Linux
+sudo pacman -S texlive-most texlive-bibtexextra
+```
+
+#### Install VS Code and LaTeX Workshop
+```bash
+# Download and install VS Code from official website
+# Then install LaTeX Workshop extension through VS Code Extensions
+```
+
+### For macOS Users
+
+#### Install TeX Live (MacTeX)
+1. Download MacTeX from [https://www.tug.org/mactex/](https://www.tug.org/mactex/)
+2. Run the installer (requires ~4GB disk space)
+
+#### Install VS Code and LaTeX Workshop
+1. Download VS Code from [https://code.visualstudio.com/](https://code.visualstudio.com/)
+2. Install LaTeX Workshop extension
+
+### VS Code Configuration for LaTeX
+
+After installing LaTeX Workshop, VS Code will automatically:
+- Detect `.tex` files and provide syntax highlighting
+- Offer auto-compilation on save
+- Provide PDF preview in VS Code
+- Show compilation errors and warnings
+
+**Recommended VS Code Settings for LaTeX:**
+```json
+{
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux", "*.bbl", "*.blg", "*.idx", "*.ind", "*.lof", 
+        "*.lot", "*.out", "*.toc", "*.acn", "*.acr", "*.alg", 
+        "*.glg", "*.glo", "*.gls", "*.ist", "*.fls", "*.log", 
+        "*.fdb_latexmk", "*.synctex.gz"
+    ]
+}
+```
+
+Add these settings to your VS Code settings.json (File → Preferences → Settings → Open JSON).
+
 ## 🚀 Quick Start
 
 1. **Clone or download this template**
@@ -82,15 +214,93 @@ kmutt_thesis_sample/
 
 ## ✏️ Customizing the Template
 
-### Step 1: Update Metadata
-Edit `setup/metadata.tex` to include:
-- Your name
-- Thesis title
-- Advisor name
-- Department
-- Submission date
+### Step 1: Configure Setup Files
 
-### Step 2: Replace Placeholder Content
+The `setup/` folder contains essential configuration files that must be customized:
+
+#### `setup/metadata.tex` - **MUST CUSTOMIZE**
+This file contains your thesis metadata. Replace ALL placeholders:
+
+```latex
+% Student Information
+\newcommand{\studentname}{[YOUR FULL NAME]}
+\newcommand{\studentid}{[YOUR STUDENT ID]}
+
+% Thesis Information
+\newcommand{\thesistitle}{[YOUR THESIS TITLE]}
+\newcommand{\thesistitleth}{[YOUR THESIS TITLE IN THAI]}
+\newcommand{\degree}{[YOUR DEGREE e.g., Master of Science]}
+\newcommand{\degreeth}{[YOUR DEGREE IN THAI]}
+\newcommand{\major}{[YOUR MAJOR e.g., Computer Science]}
+\newcommand{\majorth}{[YOUR MAJOR IN THAI]}
+
+% Faculty and University
+\newcommand{\faculty}{[YOUR FACULTY]}
+\newcommand{\facultyth}{[YOUR FACULTY IN THAI]}
+\newcommand{\university}{King Mongkut's University of Technology Thonburi}
+\newcommand{\universityth}{มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี}
+
+% Advisory Committee
+\newcommand{\advisor}{[Advisor Title and Name]}
+\newcommand{\advisorth}{[Advisor Name in Thai]}
+\newcommand{\coadvisor}{[Co-advisor if any, or remove this line]}
+
+% Submission Information
+\newcommand{\submitmonth}{[MONTH]}
+\newcommand{\submityear}{[YEAR]}
+```
+
+#### `setup/packages.tex` - Usually no changes needed
+Contains all required LaTeX packages. Only modify if you need additional packages for your research.
+
+#### `setup/formatting.tex` - Usually no changes needed
+Contains document formatting settings (margins, fonts, spacing). Follows KMUTT guidelines.
+
+### Step 2: Customize Front Matter
+
+The `frontmatter/` folder contains pages that appear before your main content. **All files need customization:**
+
+#### `frontmatter/abstract.tex` - **MUST CUSTOMIZE**
+Replace the entire content with your actual abstract:
+- Write a concise summary of your research (typically 150-300 words)
+- Include research objectives, methodology, key findings, and conclusions
+- Available in both English and Thai versions
+
+#### `frontmatter/acknowledgement.tex` - **MUST CUSTOMIZE**
+Write your personal acknowledgements:
+- Thank your advisor, committee members, family, friends
+- Acknowledge funding sources, institutions, or organizations
+- Keep it professional and heartfelt
+
+#### `frontmatter/listsymbols.tex` - **CUSTOMIZE IF NEEDED**
+Add mathematical symbols and notations used in your thesis:
+```latex
+\begin{longtable}{cl}
+$\alpha$ & Alpha coefficient \\
+$\beta$ & Beta parameter \\
+$\sigma$ & Standard deviation \\
+% Add your symbols here
+\end{longtable}
+```
+
+#### `frontmatter/listabbrev.tex` - **CUSTOMIZE IF NEEDED**
+Add abbreviations and acronyms used in your thesis:
+```latex
+\begin{longtable}{ll}
+AI & Artificial Intelligence \\
+ML & Machine Learning \\
+API & Application Programming Interface \\
+% Add your abbreviations here
+\end{longtable}
+```
+
+#### Auto-generated files (usually no changes needed):
+- `titlepage.tex` - Uses metadata from `setup/metadata.tex`
+- `contents.tex` - Table of contents (auto-generated)
+- `listtables.tex` - List of tables (auto-generated)
+- `listfigures.tex` - List of figures (auto-generated)
+
+### Step 3: Replace Placeholder Content
 Throughout all chapters and frontmatter files, replace:
 - `[YOUR NAME]` with your actual name
 - `[YOUR RESEARCH TOPIC]` with your thesis title
@@ -98,11 +308,28 @@ Throughout all chapters and frontmatter files, replace:
 - `[Advisor Title and Name]` with your advisor's information
 - All other bracketed placeholders with your content
 
-### Step 3: Add Your Research Content
+### Step 4: Add Your Research Content
 - Write your actual research content in each chapter
 - Add your methodology, results, analysis
 - Include your own figures and tables
 - Update the literature review with relevant sources
+
+### Quick Customization Checklist
+
+**Essential Files to Customize:**
+- [ ] `setup/metadata.tex` - Your personal and thesis information
+- [ ] `frontmatter/abstract.tex` - Your research abstract
+- [ ] `frontmatter/acknowledgement.tex` - Your acknowledgements
+- [ ] `frontmatter/listsymbols.tex` - Your mathematical symbols (if any)
+- [ ] `frontmatter/listabbrev.tex` - Your abbreviations (if any)
+- [ ] All chapter files (`chapters/chapter1.tex` through `chapter5.tex`)
+- [ ] `references.bib` - Your actual references
+
+**Files that auto-update:**
+- Table of contents, list of figures, list of tables (generated automatically)
+- Title page (uses information from `metadata.tex`)
+
+**Tip:** Start with `setup/metadata.tex` first, as this information is used throughout the document!
 
 ## 🖼️ Adding Images
 
